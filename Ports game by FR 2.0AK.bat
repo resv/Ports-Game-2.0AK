@@ -80,7 +80,7 @@ echo.    NTP^|123.........Network Time Protocol (UTC)
 echo.NetBios^|137-139*....Network BIOS (Basic Input/Output Services)
 echo. IMAPv4^|143.........Mail Stored on a Server (Access from Devices)
 echo.   SNMP^|161/162*....Simple Network Management Protocol
-echo.  LDAP^|389.........Lightweight Directory Access Protocol
+echo.  LDAP^|389..........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
 echo.TCP 445^|SMB*........Server Message Block
@@ -89,7 +89,7 @@ echo.   RTSP^|554*........Real-Time Streaming Protocol
 echo.  LDAPS^|636.........LightWeight Directory Access SECURE
 echo.
 echo.    TCP^|1720*.......Teleconferencing Protocol
-echo.    MGCP^|2427/2727*..Media Gateway Control Protocol
+echo.    MGCP^|2427/2727*.Media Gateway Control Protocol
 echo.    RDP^|3389........Remote Desktop Protocol
 echo.    RTP^|5004/5005*..Real-time Transport Protocol
 echo.    SIP^|5060/5061*..Session Initiation Protocol
