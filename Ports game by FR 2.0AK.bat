@@ -75,22 +75,21 @@ echo.   TFTP^|69..........Trivial (Not Important)
 echo.   HTTP^|80..........UNSECURE Web Access
 echo.   POP3^|110.........Rcv Email (Inbox)
 echo.   NNTP^|119*........Network News Transport Protocol
-echo.    NTP^|123.........Network Time Protocol (UTC)
 echo.
+echo.    NTP^|123.........Network Time Protocol (UTC)
 echo.NetBios^|137-139*....Network BIOS (Basic Input/Output Services)
-echo. IMAPv4^|143.........Mail Stored on a Server 
-echo.                     (Access from Many Devices)
+echo. IMAPv4^|143.........Mail Stored on a Server (Access from Devices)
 echo.   SNMP^|161/162*....Simple Network Management Protocol
-echo.   LDAP^|389.........Lightweight Directory Access Protocol
+echo.  LDAP^|389.........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
 echo.TCP 445^|SMB*........Server Message Block
 echo.    RSH^|514*........Remote Shell
 echo.   RTSP^|554*........Real-Time Streaming Protocol
-echo.
 echo.  LDAPS^|636.........LightWeight Directory Access SECURE
+echo.
 echo.    TCP^|1720*.......Teleconferencing Protocol
-echo    MGCP^|2427/2727*..Media Gateway Control Protocol
+echo.    MGCP^|2427/2727*..Media Gateway Control Protocol
 echo.    RDP^|3389........Remote Desktop Protocol
 echo.    RTP^|5004/5005*..Real-time Transport Protocol
 echo.    SIP^|5060/5061*..Session Initiation Protocol
@@ -734,6 +733,8 @@ if %answer19% == x (
 	cls
 	goto Q1)
 	
+
+
 :Q20
 echo --------------------------------------------------------------
 echo Question N20
@@ -749,7 +750,6 @@ echo . 123
 echo . 22
 echo . 110
 
-
 set /p answer20= SNTP port Number is :
 if %answer20% == 123 ( 
 	echo Correct keep going
@@ -764,6 +764,8 @@ if %answer20% == 123 (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q21
 echo ------------------------------------------------------------
@@ -796,6 +798,8 @@ if %answer21% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q22
 echo -----------------------------------------------------------
@@ -830,6 +834,8 @@ if %answer22% == x (
 	cls
 	goto Q1)
 	
+
+
 :Q23
 echo -------------------------------------------------------------------------
 echo Question N23
@@ -841,7 +847,6 @@ echo . 1720
 echo . 80
 echo . 110
 echo . 23
-
 
 set /p answer23= H.323 port Number is :
 if %answer23% == 1720 ( 
@@ -859,6 +864,8 @@ if %answer23% == x (
 	cls
 	goto Q1)
 	
+
+
 :Q24
 echo ----------------------------------------------------------------
 echo Question N24
@@ -890,6 +897,7 @@ if %answer24% == x (
 	goto Q1)
 
 
+
 :Q25
 echo -------------------------------------------------------------
 echo Question N25
@@ -917,6 +925,8 @@ if %answer25% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q26
 echo -------------------------------------------------------------
@@ -949,6 +959,8 @@ if %answer26% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q27
 echo -------------------------------------------------------------
@@ -983,6 +995,8 @@ if %answer27% == x (
 	cls
 	goto Q1)
 
+
+
 :Q28
 echo -------------------------------------------------------------
 echo Question N28
@@ -1011,6 +1025,8 @@ if %answer28% == x (
 	cls
 	goto Q1)
 	
+
+
 :Q29
 echo -------------------------------------------------------------
 echo Question N29
@@ -1043,6 +1059,8 @@ if %answer29% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q30
 echo -------------------------------------------------------------
