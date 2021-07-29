@@ -4,22 +4,34 @@ title Port TCP/IP
 COLOR 1F
 mode con:cols=60 lines=40
 
-REM 7/28/21 SOURCE CODE MODIFIED BY ADAM KIM FROM THE BEST CYCLE, 2021-NY-14
-REM I LITERALLY LEARNED BAT SCRIPTING FOR 2 HOURS ON NETACAD, FEEL FREE TO MAKE THIS CODE MORE EFFICIENT FOR FUTURE STUDENTS
+REM V1 Author: FAYCEL RAMDA
+REM V2 Author: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
+REM V1 AND V2 SOURCECODE AVAILABLE @ VWWW.GITHUB.COM/RESV
+REM NEXT CYCLE STUDENTS CAN MAKE THIS CODE MORE EFFICIENT...
+
+REM ---------------------------v2 UPDATES-----------------------------------------------------------------------------------------
+REM -BYPASSED WELCOME SCREEN TO INPUT NAME (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
+REM -REMOVED ALL STATEMENTS WITH "%username&" FOR GRAMMAR SINCE WE REMOVED THE USE FOR USERNAME INPUT
+REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
+REM -ADDED NEW PORTS BASED ON CURRENT QUESTIONS
+REM -FIXED TYPOS, ADDED PROMPTS FOR MULTIPLE QUESTIONS
+REM -ADDED QUESTION RANDOMIZER ALGORITHM
+REM -MODIFED FINISH PAGE
+REM -ADDED COMMENTS FOR DOCUMENTATION
+REM ------------------------------------------------------------------------------------------------------------------------------
 
 
-REM REMOVED WELCOME SCREEN TO INPUT NAME (REDUCE FLUFF)
-REM INSTEAD OF DELETING, WE SIMPLY BY PASS ":Welcome" (SOMEONE MAY WANT TO KEEP THIS IN THE FUTURE)
-REM ALSO EDITED ALL STATEMENTS WITH "%username&" FOR GRAMMAR SINCE WE REMOVED USERNAME INPUT
-
+REM ------BYPASSED WELCOME SCREEN------------
 REM :welcome
 REM echo.-------------------------------------
 REM echo         TCP/UDP ports Number
 REM echo.-------------------------------------
 REM echo please enter your name : 
 REM set /p username= Name is : 
-
 REM if ==  goto start
+REM ------------------------------------------
+
+
 
 REM WE GO RIGHT INTO THE START SELECTION SCREEN
 :start
@@ -39,48 +51,57 @@ echo [1] to begin test
 echo [2] to exit test
 echo [x] at any time to exit test and list all ports
 
-REM added line break for clarity and changed user input variable name
+REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT WORDING
 echo.
 set /p choose=Waiting for your choice...
 if %choose% == 1 goto begin
 if %choose% == 2 goto finish
-REM ADDED OPTION TO PRESS X TO QUIT AND SEE ALL PORTS
 if %choose% == x goto portList
 
-REM PORTLIST PAGE HERE
+REM ADDED PORTLIST PAGE (ADDED PORTS 119,138,162,,445,514,554,1720,2427/2727,5004/5005,5060/5061 BASED ON TEST Qs)
 :portList
 cls
 echo.-------------------------------------
 echo         PORT LIST
 echo.-------------------------------------
-echo.    FTP^|20/21   Sends Files
-echo.    SSH^|22      Secure Shell (Secure Remote)
-echo.Telenet^|23      Unsecure Remote Access Console
-echo.   SMTP^|25      Sends Mail
+echo.    FTP^|20/21.......Sends Files
+echo.    SSH^|22..........Secure Shell (Secure Remote)
+echo.Telenet^|23..........Unsecure Remote Access Console
+echo.   SMTP^|25..........Sends Mail
+echo.    DNS^|53..........Domain Name Server (Network Phonebook)
 echo.
-echo.    DNS^|53      Domain Name Server (Network Phonebook)
-echo.   DHCP^|67/68   Dynamic Host Configuration Protocol
-echo.   TFTP^|69      Trivial (Not Important)
-echo.   HTTP^|80      UNSECURE web access
+echo.   DHCP^|67/68.......Dynamic Host Configuration Protocol
+echo.   TFTP^|69..........Trivial (Not Important)
+echo.   HTTP^|80..........UNSECURE Web Access
+echo.   POP3^|110.........Rcv Email (Inbox)
+echo.   NNTP^|119*........Network News Transport Protocol
+echo.    NTP^|123.........Network Time Protocol (UTC)
 echo.
-echo.   POP3^|110     Rcv Email (Inbox)
-echo.    NTP^|123     Network Time Protocol (UTC)
-echo.NetBios^|137/139 Network BIOS (Basic Input/Output Services)
-echo. IMAPv4^|143     Mail Stored on a Server 
-echo.                (Access from Many Devices)
+echo.NetBios^|137-139*....Network BIOS (Basic Input/Output Services)
+echo. IMAPv4^|143.........Mail Stored on a Server 
+echo.                     (Access from Many Devices)
+echo.   SNMP^|161/162*....Simple Network Management Protocol
+echo.   LDAP^|389.........Lightweight Directory Access Protocol
 echo.
-echo.   SNMP^|161     Simple Network Management Protocol
-echo.   LDAP^|389     Lightweight Directory Access Protocol
-echo.  HTTPS^|443     Secure Web Access
-echo.  LDAPS^|636     LightWeight Directory Access SECURE
-echo.    RDP^|3389    Remote Desktop Protocol
+echo.  HTTPS^|443.........Secure Web Access
+echo.TCP 445^|SMB*........Server Message Block
+echo.    RSH^|514*........Remote Shell
+echo.   RTSP^|554*........Real-Time Streaming Protocol
+echo.
+echo.  LDAPS^|636.........LightWeight Directory Access SECURE
+echo.    TCP^|1720*.......Teleconferencing Protocol
+echo    MGCP^|2427/2727*..Media Gateway Control Protocol
+echo.    RDP^|3389........Remote Desktop Protocol
+echo.    RTP^|5004/5005*..Real-time Transport Protocol
+echo.    SIP^|5060/5061*..Session Initiation Protocol
 echo.
 echo.
+echo.*New ports added based on questions
 echo.
 pause
 goto :start
 
-REM "begin" page will RANDOMIZE QUESTIONS WE MAKE AN ARRAY OF 0-29 FOR 30 TOTAL QUESTIONS
+REM "begin" PAGE WILL INITIATE RANDOM ALGORITHM
 :begin
 cls
 echo.----------------------------------------
@@ -94,7 +115,7 @@ echo server program on a computer in a network.
 echo The portnumber identifies what type of 
 echo port it is.
 
-
+REM RANDOM ALGORITHM
 
 randomize array indices of 0-26
 
@@ -110,12 +131,16 @@ cls
 
 
 
-
-REM QUESTIONS 1-30
+REM ------------------ALL QUESTION COMMENTS-----------------------------------
+REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
+REM -Q7 FIXED TYPO "HHTPS"
+REM -PROMPT WORDING ADDED TO NOTIFY USER THERE ARE MORE THAN 1 ANSWER
+REM
 
 echo ----------------------------------------
 echo               let's begin
 echo ----------------------------------------
+
 :Q1
 echo -----------------------------------------
 echo Question N01
@@ -128,7 +153,6 @@ echo . 25
 echo . 21
 echo . 22
 echo . 110
-
 
 set /p answer1= SSH port Number is :
 if %answer1% == 22 ( 
@@ -146,13 +170,14 @@ if %answer1% == x (
 	cls
 	goto Q1)
 
+
+
 :Q2
 echo -----------------------------------------
 echo Question N02
 echo NTP (Network Time Protocol) - UDP
 echo used for time synchronization
 echo -----------------------------------------
-
 
 echo . 23
 echo . 143
@@ -173,6 +198,8 @@ if %answer2% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q3
 echo -------------------------------------------
@@ -201,7 +228,9 @@ if %answer3% == x (
 	pause 
 	cls
 	goto Q1)
-	
+
+
+
 :Q4
 echo -------------------------------------------------
 echo Question N04
@@ -233,7 +262,9 @@ if %answer4% == x (
 	pause 
 	cls
 	goto Q1)
-	
+
+
+
 :Q5
 echo -------------------------------------------------
 echo Question N05
@@ -264,6 +295,8 @@ if %answer5% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q6
 echo -------------------------------------------------------------
@@ -297,10 +330,12 @@ if %answer6% == x (
 	cls
 	goto Q1)
 
+
+
 :Q7
 echo -------------------------------------------------------------
 echo Question N07
-echo HHTPS (Hypertext Transfer Protocol Secure) - TCP
+echo HTTPS (Hypertext Transfer Protocol Secure) - TCP
 echo HTTPS is an extension of HTTP and is used for secure 
 echo communication over a digital network, most often the Internet. 
 echo --------------------------------------------------------------
@@ -326,6 +361,8 @@ if %answer7% == x (
 	cls
 	goto Q1)
 
+
+
 :Q8
 echo -------------------------------------------------------------
 echo Question N08
@@ -335,7 +372,8 @@ echo computer files between a client and server on a computer network.
 echo FTP is built on a client-server model architecture using separate 
 echo control and data connections between the client and the server. 
 echo --------------------------------------------------------------
-
+echo.
+echo. (There are two valid answers)
 echo . 22
 echo . 20
 echo . 21
@@ -360,7 +398,8 @@ if %answer8% == x (
 	cls
 	goto Q1)
 
-	
+
+
 :Q9
 echo -------------------------------------------------------------
 echo Question N09
@@ -389,7 +428,9 @@ if %answer9% == x (
 	pause 
 	cls
 	goto Q1)
-	
+
+
+
 :Q10
 echo ----------------------------------------------
 echo Question N10
@@ -417,6 +458,8 @@ if %answer10% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q11
 echo -------------------------------------------------------------
@@ -448,6 +491,8 @@ if %answer11% == x (
 	cls
 	goto Q1)
 
+
+
 :Q12
 echo --------------------------------------------------------------
 echo Question N12
@@ -477,6 +522,8 @@ if %answer13% == x (
 	cls
 	goto Q1)
 
+
+
 :Q13
 echo --------------------------------------------------------------
 echo Question N13
@@ -505,7 +552,9 @@ if %answer13% == x (
 	pause 
 	cls
 	goto Q1)
-	
+
+
+
 :Q14
 echo -------------------------------------------------
 echo Question N14
@@ -534,7 +583,9 @@ if %answer14% == x (
 	pause 
 	cls
 	goto Q1)
-	
+
+
+
 :Q15
 echo --------------------------------------------------------------
 echo Question N15
@@ -562,6 +613,8 @@ if %answer15% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q16
 echo --------------------------------------------------------------
@@ -591,6 +644,8 @@ if %answer16% == x (
 	cls
 	goto Q1)
 
+
+
 :Q17
 echo --------------------------------------------------------------
 echo Question N17
@@ -618,6 +673,8 @@ if %answer17% == x (
 	pause 
 	cls
 	goto Q1)
+
+
 
 :Q18
 echo --------------------------------------------------------------
@@ -647,13 +704,15 @@ if %answer18% == x (
 	cls
 	goto Q1)
 
+
+
 :Q19
 echo --------------------------------------------------------------
 echo Question N19
 echo SNMP Trap (Simple Network Management Protocol Trap) - TCP, UDP
 echo A notification sent from an SNMP agent to an SNMP manager
 echo --------------------------------------------------------------
-
+echo (Choose the best answer)
 echo . 162
 echo . 23
 echo . 143
@@ -712,7 +771,7 @@ echo Question N21
 echo NetBIOS (Network Basic Input/Output System) - TCP, UDP ( it has 3 ports)
 echo Provides network communication services for LANs that use NetBIOS
 echo ----------------------------------------------------------
-
+echo (There are 3 valid answers)
 echo . TCP 139  
 echo . UDP 137
 echo . TCP 443
@@ -746,7 +805,7 @@ echo Dynamically assigns IP address information
 echo (for example, IP address, subnet mask, DNS server�s IP address,
 echo and default gateway�s IP address) to a network device
 echo ---------------------------------------------------------
-
+echo (There are 2 valid answers)
 echo . 67
 echo . 68
 echo . 65
@@ -862,11 +921,11 @@ if %answer25% == x (
 :Q26
 echo -------------------------------------------------------------
 echo Question N26
-echo MGCP (Media Gateway Control Protocol) - UDP
+echo MGCP (Media Gateway Control Protocol) - UDP 
 echo Used as a call control and communication protocol
 echo for Voice over IP networks 
 echo --------------------------------------------------------------
-
+echo (There are two valid answers)
 echo . 137
 echo . 2427
 echo . 143
@@ -959,7 +1018,7 @@ echo SIP (Session Initiation Protocol) - TCP, UDP
 echo Used to create and end sessions for one or more media connections, 
 echo including Voice over IP calls
 echo --------------------------------------------------------------
-
+echo (There are two valid answers)
 echo . TCP 5061
 echo . TCP 137
 echo . UDP 5060
@@ -988,7 +1047,7 @@ if %answer29% == x (
 :Q30
 echo -------------------------------------------------------------
 echo Question N30
-echo SMB (Server Message Block) - TCP
+echo SMB (Server Message Block) - TCP 445 
 echo Used to share files, printers, and other network resources
 echo --------------------------------------------------------------
 
@@ -1035,11 +1094,14 @@ if %finish% == 1 (
 	goto begin)
 if %finish% == 2 ( 
 	cls
-	exit
+	exit)
 )
+if %finish% == x 
+    cls
+	goto portList)
 )else (  
 	echo You deserve this, press any key 
-	echo to start the celebration and vibe out.
+	echo to start the celebrationtion
 	pause 
 	cls
 	goto celebrate)
