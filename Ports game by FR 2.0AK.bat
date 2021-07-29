@@ -25,10 +25,13 @@ REM WE GO RIGHT INTO THE START SELECTION SCREEN
 :start
 cls
 echo.-------------------------------------
-echo         TCP/UDP ports Number
+echo       TCP/UDP ports Number v2.0
 echo.-------------------------------------
+echo.
 echo Welcome to TCP/UDP PORTS/N TEST
 echo. 
+echo 30 correct consecutive answers will take you to the end
+echo.
 
 REM MODIFIED MENU WORDING AND ALSO ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS
 echo Please choose a selection:
@@ -77,15 +80,7 @@ echo.
 pause
 goto :start
 
-REM TO RANDOMIZE QUESTIONS WE MAKE AN ARRAY OF 0-26 FOR 27 TOTAL QUESTIONS
-
-
-
-
-
-
-
-
+REM "begin" page will RANDOMIZE QUESTIONS WE MAKE AN ARRAY OF 0-29 FOR 30 TOTAL QUESTIONS
 :begin
 cls
 echo.----------------------------------------
@@ -98,12 +93,29 @@ echo way a client program specifies a specific
 echo server program on a computer in a network.
 echo The portnumber identifies what type of 
 echo port it is.
+
+
+
+randomize array indices of 0-26
+
+then go to first index
+question should increment array index to the next.
+after last index is reached, go to end.
+
+
 pause 
 cls
+
+
+
+
+
+
+REM QUESTIONS 1-30
+
 echo ----------------------------------------
 echo               let's begin
 echo ----------------------------------------
-
 :Q1
 echo -----------------------------------------
 echo Question N01
@@ -882,39 +894,48 @@ if %answer30% == 445 (
 	echo Correct keep going
 	pause 
 	cls
-	goto thanks 
+	goto finish 
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
 	cls
 	goto Q1)
 
-:thanks
-echo ----------------------FAYCEL RAMDA---------------------------
+
+REM SET NEW VARIABLE FOR FINISH PAGE TO USE IT'S OWN VARIABLE INSTEAD OF CARRY IT FROM Q30. 
+REM REMOVED USERNAME VARIABLE FLUFF, CHANGED USER INPUT VARIABLE FOR CONTINUITY
+REM ADDED OPTION FOR USER TO EXIT OR EXIT AND CONGRATS MUSIC
+
+:finish
+echo ----------------------FINISH---------------------------
 echo THANK YOU SO MUCH 
-echo %username%
-echo IF YOU WANT TO PLAY AGAIN TYPE FAYCEL 
-echo FOR EXIT TYPE THANKS  
+REM echo %username%
+echo Please choose a selection:
+echo [1] to Retake test
+echo [2] to exit test
+echo [3] to exit test and celebrate
 echo --------------------------------------------------------------
 
-echo . PLAY AGAIN = FAYCEL (CAPITAL LETTERS)
-echo . EXIT = THANKS (CAPITAL LETTERS)
 
-
-set /p answer30= CHOICE : 
-if %answer30% == FAYCEL ( 
-	echo WELCOME AGAIN AND BEST LUCK  
-	pause 
+set /p finish= CHOICE : 
+if %finish% == 1 ( 
 	cls
-	goto start
+	goto begin)
+if %finish% == 2 ( 
+	cls
+	exit
+)
 )else (  
-	echo Thank you for your visit
-	echo Enter for exit 
+	echo You deserve this, press any key 
+	echo to start the celebration and vibe out.
 	pause 
 	cls
-	goto finish)
-:finish
-start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
+	goto celebrate)
+
+:celebrate
+REM OKAY THIS IS SOME WEIRD REDIRECT ON TO THE USER....REMOVED FOR SOMETHING MORE PLEASING
+REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
+start https://www.youtube.com/watch?v=SC4xMk98Pdc&t=37s
 
 exit
 
