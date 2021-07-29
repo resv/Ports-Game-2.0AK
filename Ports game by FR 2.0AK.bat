@@ -1,22 +1,24 @@
 @echo off
 cls
 title Port TCP/IP
-COLOR 1F
-mode con:cols=60 lines=40
+COLOR 0F
+mode con:cols=80 lines=40
 
-REM V1 Author: FAYCEL RAMDA
-REM V2 Author: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
-REM V1 AND V2 SOURCECODE AVAILABLE @ VWWW.GITHUB.COM/RESV
+REM V1 AUTHOR: FAYCEL RAMDA
+REM V2 AUTHOR: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
+REM V3 AUTHOR: (YOU)
+REM ORIGINAL SOURCECODE AVAILABLE @ VWWW.GITHUB.COM/RESV
 REM NEXT CYCLE STUDENTS CAN MAKE THIS CODE MORE EFFICIENT...
 
 REM ---------------------------v2 UPDATES-----------------------------------------------------------------------------------------
-REM -BYPASSED WELCOME SCREEN TO INPUT NAME (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
-REM -REMOVED ALL STATEMENTS WITH "%username&" FOR GRAMMAR SINCE WE REMOVED THE USE FOR USERNAME INPUT
+REM -BYPASSED WELCOME SCREEN & NAME INPUT (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
+REM -REMOVED STATEMENTS WITH "%username&" ACCORDINGLY
 REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
-REM -ADDED NEW PORTS BASED ON CURRENT QUESTIONS
-REM -FIXED TYPOS, ADDED PROMPTS FOR MULTIPLE QUESTIONS
+REM -ADDED NEW PORTS TO PORTLIST BASED ON CURRENT QUESTIONS
+REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
 REM -ADDED QUESTION RANDOMIZER ALGORITHM
 REM -MODIFED FINISH PAGE
+REM -MODIFIED DEFAULT WINDOW SIZE TO BE WIDER, MODIFIED BACKGROUND COLOR TO BE EASIER ON THE EYES
 REM -ADDED COMMENTS FOR DOCUMENTATION
 REM ------------------------------------------------------------------------------------------------------------------------------
 
@@ -45,18 +47,20 @@ echo.
 echo 30 correct consecutive answers will take you to the end
 echo.
 
-REM MODIFIED MENU WORDING AND ALSO ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS
+REM MODIFIED MENU WORDING, ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS, ADDED UPDATES OPTION
 echo Please choose a selection:
 echo [1] to begin test
 echo [2] to exit test
 echo [x] at any time to exit test and list all ports
+echo [u] to view updates
 
-REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT WORDING
+REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
 echo.
 set /p choose=Waiting for your choice...
 if %choose% == 1 goto begin
 if %choose% == 2 goto finish
 if %choose% == x goto portList
+if %choose% == u goto updates
 
 REM ADDED PORTLIST PAGE (ADDED PORTS 119,138,162,,445,514,554,1720,2427/2727,5004/5005,5060/5061 BASED ON TEST Qs)
 :portList
@@ -83,7 +87,7 @@ echo.   SNMP^|161/162*....Simple Network Management Protocol
 echo.  LDAP^|389..........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
-echo.TCP 445^|SMB*........Server Message Block
+echo.    445^|SMB*........Server Message Block
 echo.    RSH^|514*........Remote Shell
 echo.   RTSP^|554*........Real-Time Streaming Protocol
 echo.  LDAPS^|636.........LightWeight Directory Access SECURE
@@ -99,6 +103,28 @@ echo.*New ports added based on questions
 echo.
 pause
 goto :start
+
+:updates
+cls
+echo ---------------------------Notes-----------------------------------------------
+echo V1 Author: FAYCEL RAMDA
+echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14 
+echo SOURCECODE @ VWWW.GITHUB.COM/RESV
+echo NEXT CYCLE CAN MAKE THIS MORE EFFICIENT...
+echo.
+echo ---------------------------v2 UPDATES-----------------------------------------------
+echo -Questions will now randomize
+echo -Removed welcome screen and username input (removed fluff)
+echo -Reworded prompts that included usernames
+echo -Added a port list reference page, new ports added based on previous version questions
+echo -Fixed typos on certain questions, included prompts for questions that have multiple answers
+echo -A user will now have an option to celebrate when completing the test
+echo -Enlarged default window size and color scheme to be user friendly
+echo ------------------------------------------------------------------------------------
+echo.
+pause
+goto :start
+
 
 REM "begin" PAGE WILL INITIATE RANDOM ALGORITHM
 :begin
