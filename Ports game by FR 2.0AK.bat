@@ -135,7 +135,11 @@ if %answer1% == 22 (
 	echo Correct keep going
 	pause 
 	cls
-	goto Q2 
+	goto Q2
+) 
+if %answer1% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -160,6 +164,10 @@ if %answer2% == 123 (
 	pause 
 	cls
 	goto Q3 
+)
+if %answer2% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -184,6 +192,10 @@ if %answer3% == 69 (
 	pause 
 	cls
 	goto Q4 
+)
+if %answer3% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -212,6 +224,10 @@ if %answer4% == 23 (
 	pause 
 	cls
 	goto Q5 
+)
+if %answer4% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -239,6 +255,10 @@ if %answer5% == 53 (
 	pause 
 	cls
 	goto Q6 
+)
+if %answer5% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -267,6 +287,10 @@ if %answer6% == 80 (
 	pause 
 	cls
 	goto Q7 
+)
+if %answer6% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -292,6 +316,10 @@ if %answer7% == 443 (
 	pause 
 	cls
 	goto Q8 
+)
+if %answer7% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -322,7 +350,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q9
-
+)
+if %answer8% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -349,6 +380,10 @@ if %answer9% == 143 (
 	pause 
 	cls
 	goto Q10 
+)
+if %answer9% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -373,6 +408,10 @@ if %answer10% == 25 (
 	pause 
 	cls
 	goto Q11 
+)
+if %answer10% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -399,6 +438,10 @@ if %answer11% == 22 (
 	pause 
 	cls
 	goto Q12 
+)
+if %answer11% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -424,6 +467,10 @@ if %answer12% == 3389 (
 	pause 
 	cls
 	goto Q13 
+)
+if %answer13% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -449,6 +496,10 @@ if %answer13% == 554 (
 	pause 
 	cls
 	goto Q14 
+)
+if %answer13% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -474,6 +525,10 @@ if %answer14% == 143 (
 	pause 
 	cls
 	goto Q15 
+)
+if %answer14% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -498,6 +553,10 @@ if %answer15% == 119 (
 	pause 
 	cls
 	goto Q16 
+)
+if %answer15% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -522,6 +581,10 @@ if %answer16% == 514 (
 	pause 
 	cls
 	goto Q17 
+)
+if %answer16% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -546,6 +609,10 @@ if %answer17% == 110 (
 	pause 
 	cls
 	goto Q18 
+)
+if %answer17% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -570,6 +637,10 @@ if %answer18% == 161 (
 	pause 
 	cls
 	goto Q19 
+)
+if %answer18% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -594,6 +665,10 @@ if %answer19% == 162 (
 	pause 
 	cls
 	goto Q20 
+)
+if %answer19% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -622,6 +697,9 @@ if %answer20% == 123 (
 	pause 
 	cls
 	goto Q21 
+)if %answer20% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -650,7 +728,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q22 
-
+)
+if %answer21% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -680,7 +761,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q23 
-
+)
+if %answer22% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -706,6 +790,10 @@ if %answer23% == 1720 (
 	pause 
 	cls
 	goto Q24 
+)
+if %answer23% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -732,6 +820,10 @@ if %answer24% == 389 (
 	pause 
 	cls
 	goto Q25
+)
+if %answer24% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -757,6 +849,10 @@ if %answer25% == 636 (
 	pause 
 	cls
 	goto Q26 
+)
+if %answer25% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -785,7 +881,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q27 
-
+)
+if %answer26% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -815,7 +914,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q28 
-
+)
+if %answer27% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -840,6 +942,10 @@ if %answer28% == 22 (
 	pause 
 	cls
 	goto Q29 
+)
+if %answer28% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -869,8 +975,10 @@ if "%result%" == "true" (
 	pause 
 	cls
 	goto Q30 
-
-
+)
+if %answer29% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
@@ -895,6 +1003,10 @@ if %answer30% == 445 (
 	pause 
 	cls
 	goto finish 
+)
+if %answer30% == x (  
+	cls
+	goto portList
 )else (  
 	echo sorry it is wrong answer try again
 	pause 
