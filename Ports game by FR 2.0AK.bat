@@ -62,7 +62,7 @@ echo.   HTTP^|80      UNSECURE web access
 echo.
 echo.   POP3^|110     Rcv Email (Inbox)
 echo.    NTP^|123     Network Time Protocol (UTC)
-echo.NetBios^|137/139 Network BIOS > Basic Input/Output Services
+echo.NetBios^|137/139 Network BIOS (Basic Input/Output Services)
 echo. IMAPv4^|143     Mail Stored on a Server 
 echo.                (Access from Many Devices)
 echo.
