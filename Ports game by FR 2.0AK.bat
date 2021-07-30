@@ -92,7 +92,7 @@ echo.  LDAP^|389..........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
 echo.    SMB^|445*........Server Message Block
-echo.    RSH^|514*........Remote Shell
+echo.    RSH^|514*........Remote Shell / Syslog
 echo.   RTSP^|554*........Real-Time Streaming Protocol
 echo.  LDAPS^|636.........LightWeight Directory Access SECURE
 echo.
@@ -143,8 +143,10 @@ echo way a client program specifies a specific
 echo server program on a computer in a network.
 echo The portnumber identifies what type of 
 echo port it is.
-
-
+echo.
+echo.
+echo (Randomizing questions...)
+echo.
 
 REM NEXT CYCLE, MAYBE YOU CAN IMPLEMENT LINKED LIST OR HASHKEY I DON'T KNOW NAN ITS ALREADY PRETTY FAST BUT ITS ABOUT PRINCIPLE
 
@@ -164,13 +166,12 @@ REM CORRECT ANSWER SHOULD INCREMENT ARRAY INDEX AND REDIRECT TO THE NEXT
 
 REM ONCE LAST INDEX IS REACHED, REDIRECT TO 'FINISH'
 
+
+
+
+
 pause 
 cls
-
-
-
-
-
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
