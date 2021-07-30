@@ -4,6 +4,10 @@ title Port TCP/IP
 COLOR 0F
 mode con:cols=80 lines=40
 
+REM TESTING FIX FTP ALLOW BOTH ANSWERS TO CONTINUE
+
+
+
 REM V1 AUTHOR: FAYCEL RAMDA
 REM V2 AUTHOR: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
 REM V3 AUTHOR: (YOU)
@@ -58,7 +62,7 @@ REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
 echo.
 set /p choose=Waiting for your choice...
 if %choose% == 1 goto begin
-if %choose% == 2 goto finish
+if %choose% == 2 goto exit
 if %choose% == x goto portList
 if %choose% == u goto updates
 
@@ -87,13 +91,13 @@ echo.   SNMP^|161/162*....Simple Network Management Protocol
 echo.  LDAP^|389..........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
-echo.    445^|SMB*........Server Message Block
+echo.    SMB^|445*........Server Message Block
 echo.    RSH^|514*........Remote Shell
 echo.   RTSP^|554*........Real-Time Streaming Protocol
 echo.  LDAPS^|636.........LightWeight Directory Access SECURE
 echo.
 echo.    TCP^|1720*.......Teleconferencing Protocol
-echo.    MGCP^|2427/2727*.Media Gateway Control Protocol
+echo.   MGCP^|2427/2727*..Media Gateway Control Protocol
 echo.    RDP^|3389........Remote Desktop Protocol
 echo.    RTP^|5004/5005*..Real-time Transport Protocol
 echo.    SIP^|5060/5061*..Session Initiation Protocol
@@ -140,17 +144,29 @@ echo server program on a computer in a network.
 echo The portnumber identifies what type of 
 echo port it is.
 
+
+
+REM NEXT CYCLE, MAYBE YOU CAN IMPLEMENT LINKED LIST OR HASHKEY I DON'T KNOW NAN ITS ALREADY PRETTY FAST BUT ITS ABOUT PRINCIPLE
+
+
 REM RANDOM ALGORITHM
+REM POPULATE ARRAY RANGE OF 0-29 RANDOMIZE
+set list= 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
 
-randomize array indices of 0-26
 
-then go to first index
-question should increment array index to the next.
-after last index is reached, go to end.
 
+
+REM HAVE REDIRECT FIRST INDEX OF THE ARRAY
+
+
+REM CORRECT ANSWER SHOULD INCREMENT ARRAY INDEX AND REDIRECT TO THE NEXT
+
+
+REM ONCE LAST INDEX IS REACHED, REDIRECT TO 'FINISH'
 
 pause 
 cls
+
 
 
 
@@ -1138,7 +1154,7 @@ if %finish% == 1 (
 	goto begin)
 if %finish% == 2 ( 
 	cls
-	exit)
+	goto exit)
 )
 if %finish% == x 
     cls
@@ -1150,9 +1166,15 @@ if %finish% == x
 	cls
 	goto celebrate)
 
+:exit
+cls
+exit
+
+
 :celebrate
-REM OKAY THIS IS SOME WEIRD REDIRECT ON TO THE USER....REMOVED FOR SOMETHING MORE PLEASING
+REM OKAY THIS IS SOME WEIRD IMAGE REDIRECT ON TO THE USER....REMOVED FOR SOMETHING MORE PLEASING AND TRUSTED
 REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
+
 start https://www.youtube.com/watch?v=SC4xMk98Pdc&t=37s
 
 exit
