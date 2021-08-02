@@ -55,23 +55,26 @@ REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
     if %generateArray%==true (
         set /A "i=%RANDOM%*30/32768+1"
 
+         
         call echo %%i%% is the random number
-        set "questions[index]=i"
+        set "questions[%index%]=%%i%%"
         
         call echo we are at array index '%%index%%' 
-        call echo and the value is '%%questions[%index%]%%' is the value in the current array index
+        
+      
+        call echo and the value is !questions[%index%]! in the current array index
         
         
         echo.
         
-        call echo %index% is the index counter
+        call echo %%index%% is the index counter (This should be "0"^)
         
         
         set /A "index+=1"
-        call echo %%index%% is the new incremented counter
+        call echo %%index%% is the new incremented counter (This should be "1"^)
 
         set /A "endCounter+=1"
-        call echo %%endCounter%% is the incremented endCounter 
+        call echo %%endCounter%% is the incremented endCounter (This should be "1"^)
         
     )
 
