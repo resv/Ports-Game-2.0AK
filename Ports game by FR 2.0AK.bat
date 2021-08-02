@@ -162,6 +162,16 @@ REM HAVE REDIRECT FIRST INDEX OF THE ARRAY
 
 
 REM CORRECT ANSWER SHOULD INCREMENT ARRAY INDEX AND REDIRECT TO THE NEXT
+randomize list
+last indice should be finish page.
+
+p=0 (in array)
+array[p]
+
+goto array[p]
+
+in each question goto array[p+1]
+
 
 
 REM ONCE LAST INDEX IS REACHED, REDIRECT TO 'FINISH'
