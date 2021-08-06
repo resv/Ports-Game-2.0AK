@@ -38,7 +38,7 @@ set questions[26]=index 26
 set questions[27]=index 27
 set questions[28]=index 28
 set questions[29]=index 29
-set questions[30]=index 30
+set questions[30]=last indice
 
 REM DECLARE FLAGS
 set "generateArray=true"
@@ -57,13 +57,13 @@ REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
 
          
         call echo %%i%% is the random number
-        set "questions[%index%]=%%i%%"
+        set "questions[%%index%%]=%%i%%"
         
         call echo we are at array index '%%index%%' 
         
       
-        call echo and the value is !questions[%index%]! in the current array index
-        
+        call echo and the value is %!questions[%%index%%]!% in the current array index (this should be zero)
+        call echo last indice value is %!questions[30]!% (This should be "last indice")
         
         echo.
         
