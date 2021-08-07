@@ -6,6 +6,8 @@ COLOR 0F
 mode con:cols=80 lines=40
 
 
+
+
 REM GENERATE THE ARRAY, RANGE OF 1-30 QUESTIONS
 
 set questions[0]=index 0
@@ -38,7 +40,7 @@ set questions[26]=index 26
 set questions[27]=index 27
 set questions[28]=index 28
 set questions[29]=index 29
-set questions[30]=last indice
+set questions[30]=last index
 
 REM DECLARE FLAGS
 set "generateArray=true"
@@ -55,15 +57,19 @@ REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
     if %generateArray%==true (
         set /A "i=%RANDOM%*30/32768+1"
 
-         
-        call echo %%i%% is the random number
-        set "questions[%%index%%]=%%i%%"
         
-        call echo we are at array index '%%index%%' 
-        
+        call echo %%i%% - is the random number
+        echo.
+        echo.       
+        call echo "%questions[%%i%%]%" is the array's random index value 
+        echo.
+
+
+        call echo index 0 is "%%index%%" this should be 0
       
-        call echo and the value is %!questions[%%index%%]!% in the current array index (this should be zero)
-        call echo last indice value is %!questions[30]!% (This should be "last indice")
+        echo.      
+        call echo first index value is "%!questions[%%index%%]!%" (this should be "0")
+        call echo last index value is "%questions[30]%" ( This should be "last index" )
         
         echo.
         
