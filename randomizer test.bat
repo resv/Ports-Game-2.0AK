@@ -47,6 +47,7 @@ set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
 set "index=0"
+set /A "i=%RANDOM%*30/32768+1"
 
 REM GENERATE RANDOM NUMBER TO VARIABLE, (30 QUESTIONS, +1 STARTS AT 1 INSTEAD OF ZERO)
 
@@ -55,13 +56,10 @@ REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
 
 
     if %generateArray%==true (
-        set /A "i=%RANDOM%*30/32768+1"
-
-        
         call echo %%i%% - is the random number
         echo.
         echo.       
-        call echo "%questions[%%i%%]%" is the array's random index value 
+        call echo %%questions[%i%]%% is the array's random index value (this should be the same "index" + random number above)
         echo.
 
 
