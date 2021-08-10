@@ -52,16 +52,13 @@ set /A "i=%RANDOM%*30/32768+1"
 REM GENERATE RANDOM NUMBER TO VARIABLE, (30 QUESTIONS, +1 STARTS AT 1 INSTEAD OF ZERO)
 
 
-REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
-
-
+REM MAIN VARIABLE TESTING AND SYNTAX
     if %generateArray%==true (
         call echo %%i%% - is the random number
         echo.
         echo.       
         call echo %%questions[%i%]%% is the array's random index value (this should be the same "index" + random number above)
         echo.
-
 
         call echo index 0 is "%%index%%" this should be 0
       
@@ -70,18 +67,24 @@ REM WHILE LOOP TO GENERATE RANDOM ARRAY AND TEST FOR NO DUPLICATES
         call echo last index value is "%questions[30]%" ( This should be "last index" )
         
         echo.
-        
         call echo %%index%% is the index counter (This should be "0"^)
-        
         
         set /A "index+=1"
         call echo %%index%% is the new incremented counter (This should be "1"^)
 
         set /A "endCounter+=1"
         call echo %%endCounter%% is the incremented endCounter (This should be "1"^)
-        
     )
 
+echo.
 
 
+call echo the following is the array list %%questions[%index%]%%
+
+
+for /l %%questions in (0,1,30) do ( 
+   echo !topic[%%n]!
+
+echo.
+echo.
 pause
