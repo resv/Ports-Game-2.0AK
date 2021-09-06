@@ -4,9 +4,6 @@ title Port TCP/IP
 COLOR 0F
 mode con:cols=80 lines=40
 
-REM TESTING FIX FTP ALLOW BOTH ANSWERS TO CONTINUE
-
-
 
 REM V1 AUTHOR: FAYCEL RAMDA
 REM V2 AUTHOR: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
@@ -37,7 +34,8 @@ REM set /p username= Name is :
 REM if ==  goto start
 REM ------------------------------------------
 
-
+REM BE ADVISED, THERE ARE 2x LIMIT VARIABLES, MUST CHANGE FOR BOTH IF ADDING MORE Qs
+set "limit=30"
 
 REM WE GO RIGHT INTO THE START SELECTION SCREEN
 :start
@@ -48,7 +46,9 @@ echo.-------------------------------------
 echo.
 echo Welcome to TCP/UDP PORTS TEST
 echo. 
-echo 30 correct consecutive answers will take you to the end
+echo %limit% correct consecutive answers will take you to the end
+echo. 
+echo.
 echo.
 
 REM MODIFIED MENU WORDING, ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS, ADDED UPDATES OPTION
@@ -153,8 +153,8 @@ echo.
 
 
 REM CREATED AN ARRAY MANUALLY BECAUSE BATCH FILE ARRAY CREATION IS TOO COMPLEX FOR ME TO MAKE EFFICIENTLY IN MY SHORT TIME
-set questions[1]=Q2
-set questions[2]=Q3
+set questions[1]=Q1
+set questions[2]=Q2
 set questions[3]=Q3
 set questions[4]=Q4
 set questions[5]=Q5
@@ -182,7 +182,7 @@ set questions[26]=Q26
 set questions[27]=Q27
 set questions[28]=Q28
 set questions[29]=Q29
-set questions[30]=last index
+set questions[30]=Q30
 
 
 REM THIS IS THE RANDOMIZER ALGORYTHM THAT WILL RANDOMIZE AFTER EACH QUESTION (must be added after each question to rerandomize)
@@ -196,18 +196,25 @@ set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
 set "index=0"
+set "limit=1"
+
+REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
+REM THIS INCREMENTS END COUNTER, IF REACHED THE LIMIT, we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
+REM set /A "i=%RANDOM%*30/32768+1"
+REM set /A "endCounter+=1"
+REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 
 pause 
 cls
-goto Q%i%
+goto Q1
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
 REM -Q7 FIXED TYPO "HHTPS"
 REM -PROMPT WORDING ADDED TO NOTIFY USER THERE ARE MORE THAN 1 ANSWER
-REM
+REM 
 
 echo ----------------------------------------
 echo               let's begin
@@ -229,10 +236,17 @@ echo . 110
 set /p answer1= SSH port Number is :
 if %answer1% == 22 ( 
 	echo Correct keep going
+	set /A "endCounter+=1"
 	pause 
 	cls
 	goto Q2
-) 
+)
+if ((%answer1% == 22) AND (%endCounter% == %limit%))(
+		echo YES THAT IS CORRECT!
+		pause
+		cls
+		goto celebrate
+)
 if %answer1% == x (  
 	cls
 	goto portList
@@ -240,7 +254,7 @@ if %answer1% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -257,11 +271,21 @@ echo . 123
 echo . 443
 set /p answer2= NTP port Number is :
 if %answer2% == 123 ( 
-	echo Correct keep going
-	pause 
+	set /A "endCounter+=1")
+
+if ((%answer2% == 123) && (%endCounter% == %limit%))(
+	echo YES THAT IS CORRECT!
+	pause
 	cls
-	goto Q3 
-)
+	goto celebrate
+	)else(
+		echo correct keep going
+		set /A "i=%RANDOM%*30/32768+1"
+		pause
+		cls
+		goto %i%
+	)
+
 if %answer2% == x (  
 	cls
 	goto portList
@@ -269,7 +293,8 @@ if %answer2% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
+
 
 
 
@@ -299,7 +324,7 @@ if %answer3% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -333,7 +358,7 @@ if %answer4% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -366,7 +391,7 @@ if %answer5% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -400,7 +425,7 @@ if %answer6% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -431,7 +456,7 @@ if %answer7% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -468,7 +493,7 @@ if %answer8% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -499,7 +524,7 @@ if %answer9% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -529,7 +554,7 @@ if %answer10% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -561,7 +586,7 @@ if %answer11% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -592,7 +617,7 @@ if %answer13% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -623,7 +648,7 @@ if %answer13% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -654,7 +679,7 @@ if %answer14% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -684,7 +709,7 @@ if %answer15% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -714,7 +739,7 @@ if %answer16% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -744,7 +769,7 @@ if %answer17% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -774,7 +799,7 @@ if %answer18% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -804,7 +829,7 @@ if %answer19% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 	
 
 
@@ -836,7 +861,7 @@ if %answer20% == 123 (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -870,7 +895,7 @@ if %answer21% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -905,7 +930,7 @@ if %answer22% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 	
 
 
@@ -935,7 +960,7 @@ if %answer23% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 	
 
 
@@ -967,7 +992,7 @@ if %answer24% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -997,7 +1022,7 @@ if %answer25% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -1031,7 +1056,7 @@ if %answer26% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -1066,7 +1091,7 @@ if %answer27% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -1096,7 +1121,7 @@ if %answer28% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 	
 
 
@@ -1131,7 +1156,7 @@ if %answer29% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 
@@ -1161,7 +1186,7 @@ if %answer30% == x (
 	echo sorry it is wrong answer try again
 	pause 
 	cls
-	goto Q1)
+	goto start)
 
 
 REM SET NEW VARIABLE FOR FINISH PAGE TO USE IT'S OWN VARIABLE INSTEAD OF CARRY IT FROM Q30. 
@@ -1170,7 +1195,7 @@ REM ADDED OPTION FOR USER TO EXIT OR EXIT AND CONGRATS MUSIC
 
 :finish
 echo ----------------------FINISH---------------------------
-echo THANK YOU SO MUCH 
+echo I'M PROUD OF YOU
 REM echo %username%
 echo Please choose a selection:
 echo [1] to Retake test
