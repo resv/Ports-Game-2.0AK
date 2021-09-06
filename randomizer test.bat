@@ -10,36 +10,36 @@ mode con:cols=80 lines=40
 
 REM GENERATE THE ARRAY, RANGE OF 1-30 QUESTIONS
 
-set questions[0]=index 0
-set questions[1]=index 1
-set questions[2]=index 2
-set questions[3]=index 3
-set questions[4]=index 4
-set questions[5]=index 5
-set questions[6]=index 6
-set questions[7]=index 7
-set questions[8]=index 8
-set questions[9]=index 9
-set questions[10]=index 10
-set questions[11]=index 11
-set questions[12]=index 12
-set questions[13]=index 13
-set questions[14]=index 14
-set questions[15]=index 15
-set questions[16]=index 16
-set questions[17]=index 17
-set questions[18]=index 18
-set questions[19]=index 19
-set questions[20]=index 20
-set questions[21]=index 21
-set questions[22]=index 22
-set questions[23]=index 23
-set questions[24]=index 24
-set questions[25]=index 25
-set questions[26]=index 26
-set questions[27]=index 27
-set questions[28]=index 28
-set questions[29]=index 29
+set questions[0]=Q1
+set questions[1]=Q2
+set questions[2]=Q3
+set questions[3]=Q3
+set questions[4]=Q4
+set questions[5]=Q5
+set questions[6]=Q6
+set questions[7]=Q7
+set questions[8]=Q8
+set questions[9]=Q9
+set questions[10]=Q10
+set questions[11]=Q11
+set questions[12]=Q12
+set questions[13]=Q13
+set questions[14]=Q14
+set questions[15]=Q15
+set questions[16]=Q16
+set questions[17]=Q17
+set questions[18]=Q18
+set questions[19]=Q19
+set questions[20]=Q20
+set questions[21]=Q21
+set questions[22]=Q22
+set questions[23]=Q23
+set questions[24]=Q24
+set questions[25]=Q25
+set questions[26]=Q26
+set questions[27]=Q27
+set questions[28]=Q28
+set questions[29]=Q29
 set questions[30]=last index
 
 REM DECLARE FLAGS
@@ -53,17 +53,18 @@ REM GENERATE RANDOM NUMBER TO VARIABLE, (30 QUESTIONS, +1 STARTS AT 1 INSTEAD OF
 
 
 REM MAIN VARIABLE TESTING AND SYNTAX
-    if %generateArray%==true (
+
         call echo %%i%% - is the random number
         echo.
         echo.       
-        call echo %%questions[%i%]%% is the array's random index value (this should be the same "index" + random number above)
+        call echo " %%questions[%i%]%% " is the array's random index value (this should be the same "Q" + random number above)
         echo.
 
         call echo index 0 is "%%index%%" this should be 0
       
         echo.      
-        call echo first index value is "%!questions[%%index%%]!%" (this should be "0")
+        call echo first index is "%!questions[%%index%%]!%" (this should be "0")
+        call echo first index value is "%%questions[%i%]%%" (this should be "Q0")
         call echo last index value is "%questions[30]%" ( This should be "last index" )
         
         echo.
@@ -74,16 +75,15 @@ REM MAIN VARIABLE TESTING AND SYNTAX
 
         set /A "endCounter+=1"
         call echo %%endCounter%% is the incremented endCounter (This should be "1"^)
-    )
+ 
 
 echo.
 
 
 call echo the following is the array list %%questions[%index%]%%
+call echo the following is the array list %%questions[%%]%%
 
 
-for /l %%questions in (0,1,30) do ( 
-   echo !topic[%%n]!
 
 echo.
 echo.

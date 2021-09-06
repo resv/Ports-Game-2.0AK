@@ -46,16 +46,17 @@ echo.-------------------------------------
 echo       TCP/UDP ports Number v2.0
 echo.-------------------------------------
 echo.
-echo Welcome to TCP/UDP PORTS/N TEST
+echo Welcome to TCP/UDP PORTS TEST
 echo. 
 echo 30 correct consecutive answers will take you to the end
 echo.
 
 REM MODIFIED MENU WORDING, ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS, ADDED UPDATES OPTION
 echo Please choose a selection:
+echo.
 echo [1] to begin test
 echo [2] to exit test
-echo [x] at any time to exit test and list all ports
+echo [x] to view port list (Can be used at any time)
 echo [u] to view updates
 
 REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
@@ -88,7 +89,7 @@ echo.    NTP^|123.........Network Time Protocol (UTC)
 echo.NetBios^|137-139*....Network BIOS (Basic Input/Output Services)
 echo. IMAPv4^|143.........Mail Stored on a Server (Access from Devices)
 echo.   SNMP^|161/162*....Simple Network Management Protocol
-echo.  LDAP^|389..........Lightweight Directory Access Protocol
+echo.   LDAP^|389.........Lightweight Directory Access Protocol
 echo.
 echo.  HTTPS^|443.........Secure Web Access
 echo.    SMB^|445*........Server Message Block
@@ -110,21 +111,22 @@ goto :start
 
 :updates
 cls
-echo ---------------------------Notes-----------------------------------------------
+echo ------------------------------Notes-----------------------------------------
 echo V1 Author: FAYCEL RAMDA
 echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14 
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
 echo NEXT CYCLE CAN MAKE THIS MORE EFFICIENT...
 echo.
-echo ---------------------------v2 UPDATES-----------------------------------------------
-echo -Questions will now randomize
+echo ---------------------------v2 UPDATES---------------------------------------
+echo -Randomize mode has been added, questions can now be randomized
 echo -Removed welcome screen and username input (removed fluff)
-echo -Reworded prompts that included usernames
-echo -Added a port list reference page, new ports added based on previous version questions
-echo -Fixed typos on certain questions, included prompts for questions that have multiple answers
+echo -Edited or removed prompts that included usernames (removed fluff)
+echo -Added a port list reference page, added more ports based on questions
+echo -Fixed typos on certain questions
+echo -Included prompts for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
-echo ------------------------------------------------------------------------------------
+echo ----------------------------------------------------------------------------
 echo.
 pause
 goto :start
@@ -148,40 +150,58 @@ echo.
 echo (Randomizing questions...)
 echo.
 
-REM NEXT CYCLE, MAYBE YOU CAN IMPLEMENT LINKED LIST OR HASHKEY I DON'T KNOW NAN ITS ALREADY PRETTY FAST BUT ITS ABOUT PRINCIPLE
 
 
-REM RANDOM ALGORITHM
-REM POPULATE ARRAY RANGE OF 0-29 RANDOMIZE
-REM set list= 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+REM CREATED AN ARRAY MANUALLY BECAUSE BATCH FILE ARRAY CREATION IS TOO COMPLEX FOR ME TO MAKE EFFICIENTLY IN MY SHORT TIME
+set questions[1]=Q2
+set questions[2]=Q3
+set questions[3]=Q3
+set questions[4]=Q4
+set questions[5]=Q5
+set questions[6]=Q6
+set questions[7]=Q7
+set questions[8]=Q8
+set questions[9]=Q9
+set questions[10]=Q10
+set questions[11]=Q11
+set questions[12]=Q12
+set questions[13]=Q13
+set questions[14]=Q14
+set questions[15]=Q15
+set questions[16]=Q16
+set questions[17]=Q17
+set questions[18]=Q18
+set questions[19]=Q19
+set questions[20]=Q20
+set questions[21]=Q21
+set questions[22]=Q22
+set questions[23]=Q23
+set questions[24]=Q24
+set questions[25]=Q25
+set questions[26]=Q26
+set questions[27]=Q27
+set questions[28]=Q28
+set questions[29]=Q29
+set questions[30]=last index
 
 
+REM THIS IS THE RANDOMIZER ALGORYTHM THAT WILL RANDOMIZE AFTER EACH QUESTION (must be added after each question to rerandomize)
+set /A "i=%RANDOM%*30/32768+1"
 
+REM WE USE COUNTERS AND CHECK FOR 30 CORRECT ANSWERS, WE DON'T HAVE LOGIC TO REMOVE DUPLICATE QUESTIONS.
+REM THIS METHOD IS STILL EFFECTIVE IN REINFORCING MATERIAL ON A LEARNER
 
-REM HAVE REDIRECT FIRST INDEX OF THE ARRAY
-
-
-REM CORRECT ANSWER SHOULD INCREMENT ARRAY INDEX AND REDIRECT TO THE NEXT
-randomize list
-last indice should be finish page.
-
-p=0 (in array)
-array[p]
-
-goto array[p]
-
-in each question goto array[p+1]
-
-
-
-REM ONCE LAST INDEX IS REACHED, REDIRECT TO 'FINISH'
-
-
-
+REM DECLARE FLAGS:
+set "generateArray=true"
+set "dupFlag=false"
+set "endCounter=0"
+set "index=0"
 
 
 pause 
 cls
+goto Q%i%
+
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
@@ -195,7 +215,7 @@ echo ----------------------------------------
 
 :Q1
 echo -----------------------------------------
-echo Question N01
+echo Question 1
 echo SSH (Secure Shell)- TCP/UDP
 echo used for secure logins, file transfers
 echo (scp, sftp) and port forwarding
@@ -226,7 +246,7 @@ if %answer1% == x (
 
 :Q2
 echo -----------------------------------------
-echo Question N02
+echo Question 2
 echo NTP (Network Time Protocol) - UDP
 echo used for time synchronization
 echo -----------------------------------------
@@ -255,7 +275,7 @@ if %answer2% == x (
 
 :Q3
 echo -------------------------------------------
-echo Question N03
+echo Question 3
 echo TFTP (Trivial File Transfer Protocol) - UDP
 echo is a simple protocol for transferring files
 echo -------------------------------------------
@@ -285,7 +305,7 @@ if %answer3% == x (
 
 :Q4
 echo -------------------------------------------------
-echo Question N04
+echo Question 4
 echo Telnet - TCP-UDP
 echo is a client-server protocol, based on a reliable
 echo connection-oriented transport. Typically, this 
@@ -319,7 +339,7 @@ if %answer4% == x (
 
 :Q5
 echo -------------------------------------------------
-echo Question N05
+echo Question 5
 echo DNS (Domain Name System) - TCP, UDP
 echo DNS is how domain names are translated into 
 echo IP addresses, and DNS also controls email delivery. 
@@ -352,7 +372,7 @@ if %answer5% == x (
 
 :Q6
 echo -------------------------------------------------------------
-echo Question N06
+echo Question 6
 echo HTTP (Hypertext Transfer Protocol) - TCP
 echo HTTP is the underlying protocol used by the World Wide
 echo Web and this protocol defines how messages are formatted and
@@ -386,7 +406,7 @@ if %answer6% == x (
 
 :Q7
 echo -------------------------------------------------------------
-echo Question N07
+echo Question 7
 echo HTTPS (Hypertext Transfer Protocol Secure) - TCP
 echo HTTPS is an extension of HTTP and is used for secure 
 echo communication over a digital network, most often the Internet. 
@@ -417,7 +437,7 @@ if %answer7% == x (
 
 :Q8
 echo -------------------------------------------------------------
-echo Question N08
+echo Question 8
 echo FTP (File Transfer Protocol) - TCP
 echo (FTP) is a standard network protocol used for the transfer of
 echo computer files between a client and server on a computer network. 
@@ -454,7 +474,7 @@ if %answer8% == x (
 
 :Q9
 echo -------------------------------------------------------------
-echo Question N09
+echo Question 9
 echo IMAP4 (Internet Message Access Protocol 4) - TCP
 echo A programming interface (API) from the IETF that enables a user's
 echo to access the mail serveremail program
@@ -485,7 +505,7 @@ if %answer9% == x (
 
 :Q10
 echo ----------------------------------------------
-echo Question N10
+echo Question 10
 echo SMTP (Simple Mail Transport Protocol) TCP-UDP
 echo used for e-mail routing between mailservers
 echo ----------------------------------------------
@@ -515,7 +535,7 @@ if %answer10% == x (
 
 :Q11
 echo -------------------------------------------------------------
-echo Question N11
+echo Question 11
 echo SCP (Secure Copy)- TCP
 echo Provides a secure file-transfer service over an SSH connection
 echo and offers a file�s original date and time information,
@@ -547,7 +567,7 @@ if %answer11% == x (
 
 :Q12
 echo --------------------------------------------------------------
-echo Question N12
+echo Question 12
 echo RDP (Remote Desktop Protocol) - TCP
 echo A Microsoft protocol that allows a user to view and 
 echo control the desktop of a remote computer
@@ -578,7 +598,7 @@ if %answer13% == x (
 
 :Q13
 echo --------------------------------------------------------------
-echo Question N13
+echo Question 13
 echo RTSP (Real-Time Streaming Protocol) - TCP, UDP
 echo Communicates with a media server (for example, a video server)
 echo and controls the playback of the server�s media files 
@@ -609,7 +629,7 @@ if %answer13% == x (
 
 :Q14
 echo -------------------------------------------------
-echo Question N14
+echo Question 14
 echo IMAP (Internet Message Access Protocol) - TCP
 echo Retrieves email from an email server
 echo -------------------------------------------------
@@ -640,7 +660,7 @@ if %answer14% == x (
 
 :Q15
 echo --------------------------------------------------------------
-echo Question N15
+echo Question 15
 echo NNTP (Network News Transport Protocol) - TCP
 echo Supports the posting and reading of articles on Usenet news servers
 echo -------------------------------------------------------------
@@ -670,7 +690,7 @@ if %answer15% == x (
 
 :Q16
 echo --------------------------------------------------------------
-echo Question N16
+echo Question 16
 echo rsh (Remote Shell) - TCP
 echo Allows commands to be executed on a computer from a remote user
 echo --------------------------------------------------------------
@@ -700,7 +720,7 @@ if %answer16% == x (
 
 :Q17
 echo --------------------------------------------------------------
-echo Question N17
+echo Question 17
 echo POP3 (Post Office Protocol Version 3) - TCP
 echo Retrieves email from an email server 
 echo --------------------------------------------------------------
@@ -730,7 +750,7 @@ if %answer17% == x (
 
 :Q18
 echo --------------------------------------------------------------
-echo Question N18
+echo Question 18
 echo SNMP (Simple Network Management Protocol) - UDP
 echo Used to monitor and manage network devices 
 echo --------------------------------------------------------------
@@ -760,7 +780,7 @@ if %answer18% == x (
 
 :Q19
 echo --------------------------------------------------------------
-echo Question N19
+echo Question 19
 echo SNMP Trap (Simple Network Management Protocol Trap) - TCP, UDP
 echo A notification sent from an SNMP agent to an SNMP manager
 echo --------------------------------------------------------------
@@ -790,7 +810,7 @@ if %answer19% == x (
 
 :Q20
 echo --------------------------------------------------------------
-echo Question N20
+echo Question 20
 echo SNTP (Simple Network Time Protocol) - UDP
 echo Supports time synchronization among network devices, 
 echo similar to Network Time Protocol (NTP),
@@ -822,7 +842,7 @@ if %answer20% == 123 (
 
 :Q21
 echo ------------------------------------------------------------
-echo Question N21
+echo Question 21
 echo NetBIOS (Network Basic Input/Output System) - TCP, UDP ( it has 3 ports)
 echo Provides network communication services for LANs that use NetBIOS
 echo ----------------------------------------------------------
@@ -856,7 +876,7 @@ if %answer21% == x (
 
 :Q22
 echo -----------------------------------------------------------
-echo Question N22
+echo Question 22
 echo DHCP (Dynamic Host Configuration Protocol) - UDP
 echo Dynamically assigns IP address information
 echo (for example, IP address, subnet mask, DNS server�s IP address,
@@ -891,7 +911,7 @@ if %answer22% == x (
 
 :Q23
 echo -------------------------------------------------------------------------
-echo Question N23
+echo Question 23
 echo H.323 - TCP
 echo A signaling protocol that provides multimedia communications over a network
 echo -----------------------------------------------------------------------
@@ -921,7 +941,7 @@ if %answer23% == x (
 
 :Q24
 echo ----------------------------------------------------------------
-echo Question N24
+echo Question 24
 echo LDAP (Lightweight Directory Access Protocol) - TCP
 echo Provides directory services (for example, a user directory that
 echo includes username, password, email, 
@@ -953,7 +973,7 @@ if %answer24% == x (
 
 :Q25
 echo -------------------------------------------------------------
-echo Question N25
+echo Question 25
 echo LDAPS (Lightweight Directory Access Protocol over SSH) - TCP
 echo A secured version of LDAP
 echo ------------------------------------------------------------
@@ -983,7 +1003,7 @@ if %answer25% == x (
 
 :Q26
 echo -------------------------------------------------------------
-echo Question N26
+echo Question 26
 echo MGCP (Media Gateway Control Protocol) - UDP 
 echo Used as a call control and communication protocol
 echo for Voice over IP networks 
@@ -1017,7 +1037,7 @@ if %answer26% == x (
 
 :Q27
 echo -------------------------------------------------------------
-echo Question N27
+echo Question 27
 echo RTP (Real-time Transport Protocol) - TCP, UDP
 echo Used for delivering media-based data 
 echo (such as Voice over IP) through the network 
@@ -1052,7 +1072,7 @@ if %answer27% == x (
 
 :Q28
 echo -------------------------------------------------------------
-echo Question N28
+echo Question 28
 echo SFTP (Secure FTP) -TCP
 echo Provides FTP file-transfer service over an SSH connection
 echo --------------------------------------------------------------
@@ -1082,7 +1102,7 @@ if %answer28% == x (
 
 :Q29
 echo -------------------------------------------------------------
-echo Question N29
+echo Question 29
 echo SIP (Session Initiation Protocol) - TCP, UDP
 echo Used to create and end sessions for one or more media connections, 
 echo including Voice over IP calls
@@ -1117,7 +1137,7 @@ if %answer29% == x (
 
 :Q30
 echo -------------------------------------------------------------
-echo Question N30
+echo Question 30
 echo SMB (Server Message Block) - TCP 445 
 echo Used to share files, printers, and other network resources
 echo --------------------------------------------------------------
