@@ -20,7 +20,8 @@ REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
 REM -ADDED QUESTION RANDOMIZER ALGORITHM
 REM -MODIFED FINISH PAGE
 REM -MODIFIED DEFAULT WINDOW SIZE TO BE WIDER, MODIFIED BACKGROUND COLOR TO BE EASIER ON THE EYES
-REM -ADDED COMMENTS FOR DOCUMENTATION
+REM -ADDED SCORE TO KEEP TRACK DURING RANDOM MODE
+REM -ADDED COMMENTS FOR DOCUMENTATION IN SOURCE CODE
 REM ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -132,7 +133,7 @@ pause
 goto :start
 
 
-REM "begin" PAGE WILL INITIATE RANDOM ALGORITHM
+REM "begin" PAGE WILL INITIATE RANDOM ALGORITHM AND GENERATE THE ARRAY
 :begin
 cls
 echo.----------------------------------------
@@ -222,7 +223,7 @@ echo ----------------------------------------
 
 :Q1
 echo -----------------------------------------
-echo Question 1
+echo Question 1                 (Score %endCounter% / %limit%)
 echo SSH (Secure Shell)- TCP/UDP
 echo used for secure logins, file transfers
 echo (scp, sftp) and port forwarding
@@ -259,11 +260,11 @@ if %answer1% == x (
 echo.
 echo.
 echo.
-echo %endCounter% / %limit% Score
+
 
 :Q2
 echo -----------------------------------------
-echo Question 2
+echo Question 2                 (Score %endCounter% / %limit%)
 echo NTP (Network Time Protocol) - UDP
 echo used for time synchronization
 echo -----------------------------------------
@@ -303,7 +304,7 @@ if %answer2% == x (
 
 :Q3
 echo -------------------------------------------
-echo Question 3
+echo Question 3                 (Score %endCounter% / %limit%)
 echo TFTP (Trivial File Transfer Protocol) - UDP
 echo is a simple protocol for transferring files
 echo -------------------------------------------
@@ -333,7 +334,7 @@ if %answer3% == x (
 
 :Q4
 echo -------------------------------------------------
-echo Question 4
+echo Question 4                 (Score %endCounter% / %limit%)
 echo Telnet - TCP-UDP
 echo is a client-server protocol, based on a reliable
 echo connection-oriented transport. Typically, this 
@@ -367,7 +368,7 @@ if %answer4% == x (
 
 :Q5
 echo -------------------------------------------------
-echo Question 5
+echo Question 5                 (Score %endCounter% / %limit%)
 echo DNS (Domain Name System) - TCP, UDP
 echo DNS is how domain names are translated into 
 echo IP addresses, and DNS also controls email delivery. 
@@ -400,7 +401,7 @@ if %answer5% == x (
 
 :Q6
 echo -------------------------------------------------------------
-echo Question 6
+echo Question 6                 (Score %endCounter% / %limit%)
 echo HTTP (Hypertext Transfer Protocol) - TCP
 echo HTTP is the underlying protocol used by the World Wide
 echo Web and this protocol defines how messages are formatted and
@@ -434,7 +435,7 @@ if %answer6% == x (
 
 :Q7
 echo -------------------------------------------------------------
-echo Question 7
+echo Question 7                 (Score %endCounter% / %limit%)
 echo HTTPS (Hypertext Transfer Protocol Secure) - TCP
 echo HTTPS is an extension of HTTP and is used for secure 
 echo communication over a digital network, most often the Internet. 
@@ -465,7 +466,7 @@ if %answer7% == x (
 
 :Q8
 echo -------------------------------------------------------------
-echo Question 8
+echo Question 8                 (Score %endCounter% / %limit%)
 echo FTP (File Transfer Protocol) - TCP
 echo (FTP) is a standard network protocol used for the transfer of
 echo computer files between a client and server on a computer network. 
@@ -502,7 +503,7 @@ if %answer8% == x (
 
 :Q9
 echo -------------------------------------------------------------
-echo Question 9
+echo Question 9                 (Score %endCounter% / %limit%)
 echo IMAP4 (Internet Message Access Protocol 4) - TCP
 echo A programming interface (API) from the IETF that enables a user's
 echo to access the mail serveremail program
@@ -533,7 +534,7 @@ if %answer9% == x (
 
 :Q10
 echo ----------------------------------------------
-echo Question 10
+echo Question 10                 (Score %endCounter% / %limit%)
 echo SMTP (Simple Mail Transport Protocol) TCP-UDP
 echo used for e-mail routing between mailservers
 echo ----------------------------------------------
@@ -563,7 +564,7 @@ if %answer10% == x (
 
 :Q11
 echo -------------------------------------------------------------
-echo Question 11
+echo Question 11                 (Score %endCounter% / %limit%)
 echo SCP (Secure Copy)- TCP
 echo Provides a secure file-transfer service over an SSH connection
 echo and offers a file�s original date and time information,
@@ -595,7 +596,7 @@ if %answer11% == x (
 
 :Q12
 echo --------------------------------------------------------------
-echo Question 12
+echo Question 12                 (Score %endCounter% / %limit%)
 echo RDP (Remote Desktop Protocol) - TCP
 echo A Microsoft protocol that allows a user to view and 
 echo control the desktop of a remote computer
@@ -626,7 +627,7 @@ if %answer13% == x (
 
 :Q13
 echo --------------------------------------------------------------
-echo Question 13
+echo Question 13                 (Score %endCounter% / %limit%)
 echo RTSP (Real-Time Streaming Protocol) - TCP, UDP
 echo Communicates with a media server (for example, a video server)
 echo and controls the playback of the server�s media files 
@@ -688,7 +689,7 @@ if %answer14% == x (
 
 :Q15
 echo --------------------------------------------------------------
-echo Question 15
+echo Question 15                 (Score %endCounter% / %limit%)
 echo NNTP (Network News Transport Protocol) - TCP
 echo Supports the posting and reading of articles on Usenet news servers
 echo -------------------------------------------------------------
@@ -718,7 +719,7 @@ if %answer15% == x (
 
 :Q16
 echo --------------------------------------------------------------
-echo Question 16
+echo Question 16                 (Score %endCounter% / %limit%)
 echo rsh (Remote Shell) - TCP
 echo Allows commands to be executed on a computer from a remote user
 echo --------------------------------------------------------------
@@ -748,7 +749,7 @@ if %answer16% == x (
 
 :Q17
 echo --------------------------------------------------------------
-echo Question 17
+echo Question 17                 (Score %endCounter% / %limit%)
 echo POP3 (Post Office Protocol Version 3) - TCP
 echo Retrieves email from an email server 
 echo --------------------------------------------------------------
@@ -778,7 +779,7 @@ if %answer17% == x (
 
 :Q18
 echo --------------------------------------------------------------
-echo Question 18
+echo Question 18                 (Score %endCounter% / %limit%)
 echo SNMP (Simple Network Management Protocol) - UDP
 echo Used to monitor and manage network devices 
 echo --------------------------------------------------------------
@@ -808,7 +809,7 @@ if %answer18% == x (
 
 :Q19
 echo --------------------------------------------------------------
-echo Question 19
+echo Question 19                 (Score %endCounter% / %limit%)
 echo SNMP Trap (Simple Network Management Protocol Trap) - TCP, UDP
 echo A notification sent from an SNMP agent to an SNMP manager
 echo --------------------------------------------------------------
@@ -838,7 +839,7 @@ if %answer19% == x (
 
 :Q20
 echo --------------------------------------------------------------
-echo Question 20
+echo Question 20                 (Score %endCounter% / %limit%)
 echo SNTP (Simple Network Time Protocol) - UDP
 echo Supports time synchronization among network devices, 
 echo similar to Network Time Protocol (NTP),
@@ -870,7 +871,7 @@ if %answer20% == 123 (
 
 :Q21
 echo ------------------------------------------------------------
-echo Question 21
+echo Question 21                 (Score %endCounter% / %limit%)
 echo NetBIOS (Network Basic Input/Output System) - TCP, UDP ( it has 3 ports)
 echo Provides network communication services for LANs that use NetBIOS
 echo ----------------------------------------------------------
@@ -904,7 +905,7 @@ if %answer21% == x (
 
 :Q22
 echo -----------------------------------------------------------
-echo Question 22
+echo Question 22                 (Score %endCounter% / %limit%)
 echo DHCP (Dynamic Host Configuration Protocol) - UDP
 echo Dynamically assigns IP address information
 echo (for example, IP address, subnet mask, DNS server�s IP address,
@@ -939,7 +940,7 @@ if %answer22% == x (
 
 :Q23
 echo -------------------------------------------------------------------------
-echo Question 23
+echo Question 23                 (Score %endCounter% / %limit%)
 echo H.323 - TCP
 echo A signaling protocol that provides multimedia communications over a network
 echo -----------------------------------------------------------------------
@@ -969,7 +970,7 @@ if %answer23% == x (
 
 :Q24
 echo ----------------------------------------------------------------
-echo Question 24
+echo Question 24                 (Score %endCounter% / %limit%)
 echo LDAP (Lightweight Directory Access Protocol) - TCP
 echo Provides directory services (for example, a user directory that
 echo includes username, password, email, 
@@ -1001,7 +1002,7 @@ if %answer24% == x (
 
 :Q25
 echo -------------------------------------------------------------
-echo Question 25
+echo Question 25                 (Score %endCounter% / %limit%)
 echo LDAPS (Lightweight Directory Access Protocol over SSH) - TCP
 echo A secured version of LDAP
 echo ------------------------------------------------------------
@@ -1031,7 +1032,7 @@ if %answer25% == x (
 
 :Q26
 echo -------------------------------------------------------------
-echo Question 26
+echo Question 26                 (Score %endCounter% / %limit%)
 echo MGCP (Media Gateway Control Protocol) - UDP 
 echo Used as a call control and communication protocol
 echo for Voice over IP networks 
@@ -1065,7 +1066,7 @@ if %answer26% == x (
 
 :Q27
 echo -------------------------------------------------------------
-echo Question 27
+echo Question 27                 (Score %endCounter% / %limit%)
 echo RTP (Real-time Transport Protocol) - TCP, UDP
 echo Used for delivering media-based data 
 echo (such as Voice over IP) through the network 
@@ -1100,7 +1101,7 @@ if %answer27% == x (
 
 :Q28
 echo -------------------------------------------------------------
-echo Question 28
+echo Question 28                 (Score %endCounter% / %limit%)
 echo SFTP (Secure FTP) -TCP
 echo Provides FTP file-transfer service over an SSH connection
 echo --------------------------------------------------------------
@@ -1130,7 +1131,7 @@ if %answer28% == x (
 
 :Q29
 echo -------------------------------------------------------------
-echo Question 29
+echo Question 29                 (Score %endCounter% / %limit%)
 echo SIP (Session Initiation Protocol) - TCP, UDP
 echo Used to create and end sessions for one or more media connections, 
 echo including Voice over IP calls
@@ -1165,7 +1166,7 @@ if %answer29% == x (
 
 :Q30
 echo -------------------------------------------------------------
-echo Question 30
+echo Question 30                 (Score %endCounter% / %limit%)
 echo SMB (Server Message Block) - TCP 445 
 echo Used to share files, printers, and other network resources
 echo --------------------------------------------------------------
@@ -1208,8 +1209,7 @@ echo.
 echo [2] to exit test
 echo.
 echo [3] to exit test and celebrate
-echo --------------------------------------------------------------
-
+echo -------------------------------------------------------
 
 set /p finish= CHOICE : 
 if %finish% == 1 ( 
