@@ -6,7 +6,7 @@ mode con:cols=80 lines=40
 
 
 REM V1 AUTHOR: FAYCEL RAMDA
-REM V2 AUTHOR: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 
+REM V2 AUTHOR: ADAM KIM 7/28/21 CYBERSECURITY 2021-NY-14 INSTRUCTOR BRITTANY GRANT, EMMANUAL ESPINAL
 REM V3 AUTHOR: (YOU)
 REM ORIGINAL SOURCECODE AVAILABLE @ VWWW.GITHUB.COM/RESV
 REM NEXT CYCLE STUDENTS CAN MAKE THIS CODE MORE EFFICIENT...
@@ -196,7 +196,7 @@ set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
 set "index=0"
-set "limit=1"
+set "limit=0"
 
 REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
 REM THIS INCREMENTS END COUNTER, IF REACHED THE LIMIT, we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
@@ -234,18 +234,18 @@ echo . 22
 echo . 110
 
 set /p answer1= SSH port Number is :
+if ((%answer1% == 22) AND (%endCounter% == %limit%))(
+		echo YES THAT IS CORRECT!
+		pause
+		cls
+		goto finish
+)
 if %answer1% == 22 ( 
 	echo Correct keep going
 	set /A "endCounter+=1"
 	pause 
 	cls
 	goto Q2
-)
-if ((%answer1% == 22) AND (%endCounter% == %limit%))(
-		echo YES THAT IS CORRECT!
-		pause
-		cls
-		goto celebrate
 )
 if %answer1% == x (  
 	cls
@@ -1207,21 +1207,23 @@ echo --------------------------------------------------------------
 set /p finish= CHOICE : 
 if %finish% == 1 ( 
 	cls
-	goto begin)
+	goto begin
+)
 if %finish% == 2 ( 
 	cls
-	goto exit)
+	goto exit
 )
-if %finish% == x 
-    cls
-	goto portList)
-)else (  
+if %finish% == 3(  
 	echo You deserve this, press any key 
 	echo to start the celebrationtion
 	pause 
 	cls
-	goto celebrate)
-
+	goto celebrate
+)
+if %finish% == x (
+    cls
+	goto portList
+)
 :exit
 cls
 exit
@@ -1231,7 +1233,7 @@ exit
 REM OKAY THIS IS SOME WEIRD IMAGE REDIRECT ON TO THE USER....REMOVED FOR SOMETHING MORE PLEASING AND TRUSTED
 REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
 
-start https://www.youtube.com/watch?v=SC4xMk98Pdc&t=37s
+start https://youtu.be/SC4xMk98Pdc?t=37
 
 exit
 
