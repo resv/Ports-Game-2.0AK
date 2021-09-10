@@ -196,7 +196,7 @@ set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
 set "index=0"
-set "limit=0"
+set "limit=1"
 
 REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
 REM THIS INCREMENTS END COUNTER, IF REACHED THE LIMIT, we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
@@ -256,7 +256,10 @@ if %answer1% == x (
 	cls
 	goto start)
 
-
+echo.
+echo.
+echo.
+echo %endCounter% / %limit% Score
 
 :Q2
 echo -----------------------------------------
@@ -1196,10 +1199,14 @@ REM ADDED OPTION FOR USER TO EXIT OR EXIT AND CONGRATS MUSIC
 :finish
 echo ----------------------FINISH---------------------------
 echo I'M PROUD OF YOU
+echo.
 REM echo %username%
 echo Please choose a selection:
+echo.
 echo [1] to Retake test
+echo.
 echo [2] to exit test
+echo.
 echo [3] to exit test and celebrate
 echo --------------------------------------------------------------
 
@@ -1213,9 +1220,14 @@ if %finish% == 2 (
 	cls
 	goto exit
 )
-if %finish% == 3(  
-	echo You deserve this, press any key 
-	echo to start the celebrationtion
+if %finish% == 3 (  
+	echo.
+	echo.
+	echo You deserve this
+	echo.
+	echo Press any key to start the celebration!
+	echo.
+	echo.
 	pause 
 	cls
 	goto celebrate
@@ -1230,7 +1242,7 @@ exit
 
 
 :celebrate
-REM OKAY THIS IS SOME WEIRD IMAGE REDIRECT ON TO THE USER....REMOVED FOR SOMETHING MORE PLEASING AND TRUSTED
+REM OKAY THIS IS SOME WEIRD IMAGE REDIRECT ON TO THE USER FROM PRIOR DEVELOPER....REMOVED FOR SOMETHING MORE PLEASING AND TRUSTED
 REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
 
 start https://youtu.be/SC4xMk98Pdc?t=37
