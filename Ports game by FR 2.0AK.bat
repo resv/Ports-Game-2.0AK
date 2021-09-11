@@ -22,6 +22,7 @@ REM -MODIFED FINISH PAGE (OLD ONE WAS VERY WEIRD)
 REM -MODIFIED DEFAULT WINDOW SIZE TO BE WIDER, MODIFIED BACKGROUND COLOR TO BE EASIER ON THE EYES
 REM -ADDED SCORE TO KEEP TRACK DURING RANDOM MODE
 REM -ADDED COMMENTS FOR DOCUMENTATION IN SOURCE CODE
+REM -FIXED AUTO CLOSING DURING INVALID DATA INPUT E.G. BLANK "" OR AN INVALID OPTION
 REM ------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -62,12 +63,26 @@ echo  [u] to view updates
 
 REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
 echo.
+
 set /p choose=Waiting for your selection...
 if %choose% == 1 goto begin
 if %choose% == 2 goto exit
 if %choose% == x goto portList
 if %choose% == u goto updates
-IF %choose% == "" goto start
+IF NOT %choose% == x (  
+		echo.
+		echo Please select a valid option
+		pause >nul
+		cls
+		goto start
+		)
+
+REM if "%choose%" == "" set blankInput=true
+REM if "%blankInput%" == "true" (
+	::						cls
+	::						goto start
+	::						)
+
 
 REM ADDED PORTLIST PAGE (ADDED PORTS 119,138,162,,445,514,554,1720,2427/2727,5004/5005,5060/5061 BASED ON TEST Qs)
 :portList
@@ -1476,14 +1491,14 @@ echo.
 REM echo %username%
 echo Please choose a selection:
 echo.
-echo [1] to Retake test
+echo [1] to retake test
 echo.
 echo [2] to exit test
 echo.
-echo [3] to exit test and celebrate
+echo [3] to exit test and CELEBRATE!
 echo -------------------------------------------------------
 
-set /p finish= CHOICE : 
+set /p finish=Please choose a selection: 
 if %finish% == 1 ( 
 	cls
 	goto begin
@@ -1500,7 +1515,7 @@ if %finish% == 3 (
 	echo Press any key to start the celebration!
 	echo.
 	echo.
-	pause 
+	pause >nul
 	cls
 	goto celebrate
 )
@@ -1508,6 +1523,13 @@ if %finish% == x (
     cls
 	goto portList
 )
+IF NOT %finish% == x (  
+		echo.
+		echo Please select a valid option
+		pause >nul
+		cls
+		goto finish
+		)
 :exit
 cls
 exit
