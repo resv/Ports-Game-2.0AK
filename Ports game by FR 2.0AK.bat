@@ -62,11 +62,12 @@ echo  [u] to view updates
 
 REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
 echo.
-set /p choose=Waiting for your choice...
+set /p choose=Waiting for your selection...
 if %choose% == 1 goto begin
 if %choose% == 2 goto exit
 if %choose% == x goto portList
 if %choose% == u goto updates
+IF %choose% == "" goto start
 
 REM ADDED PORTLIST PAGE (ADDED PORTS 119,138,162,,445,514,554,1720,2427/2727,5004/5005,5060/5061 BASED ON TEST Qs)
 :portList
@@ -219,7 +220,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q1
+goto Q8
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -260,7 +261,7 @@ echo . 110
 				set /A "index+=1"
 				pause 
 				cls
-				goto Q2
+				goto Q%i%
 		)
 		IF %answer1% == x (  
 				cls
@@ -290,13 +291,13 @@ echo . 123
 echo . 443
 
 	set /p answer2= NTP port number is :
-		IF %answerX% == 123 IF %endCounter% == %limit% (
+		IF %answer2% == 123 IF %endCounter% == %limit% (
 				echo YES THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
-		IF %answerX% == 123 ( 
+		IF %answer2% == 123 ( 
 				echo Correct keep going
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
@@ -305,11 +306,11 @@ echo . 443
 				cls
 				goto Q%i%
 		)
-		IF %answerX% == x (  
+		IF %answer2% == x (  
 				cls
 				goto portList
 		)
-		IF NOT %answerX% == 123 (  
+		IF NOT %answer2% == 123 (  
 		echo That is incorrect!
 		pause 
 		cls
