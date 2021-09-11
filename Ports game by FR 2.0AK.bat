@@ -197,7 +197,7 @@ set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
 set "index=0"
-set "limit=1"
+set "limit=30"
 
 REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
 REM THIS INCREMENTS END COUNTER, IF REACHED THE LIMIT, we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
@@ -234,29 +234,31 @@ echo . 21
 echo . 22
 echo . 110
 
-set /p answer1= SSH port Number is :
-if ((%answer1% == 22) AND (%endCounter% == %limit%))(
-		echo YES THAT IS CORRECT!
-		pause
+		set /p answer1= SSH port Number is :
+		IF %answer1% == 22 IF %endCounter% == %limit% (
+				echo YES THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer1% == 22 ( 
+				echo Correct keep going
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+				pause 
+				cls
+				goto Q2
+		)
+		IF %answer1% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer1% == 22 (  
+		echo That is incorrect!
+		pause 
 		cls
-		goto finish
-)
-if %answer1% == 22 ( 
-	echo Correct keep going
-	set /A "endCounter+=1"
-	pause 
-	cls
-	goto Q2
-)
-if %answer1% == x (  
-	cls
-	goto portList
-)else (  
-	echo sorry it is wrong answer try again
-	pause 
-	cls
-	goto start)
-
+		goto start
+		)
 echo.
 echo.
 echo.
@@ -274,33 +276,31 @@ echo . 143
 echo . 123
 echo . 443
 set /p answer2= NTP port Number is :
-if %answer2% == 123 ( 
-	set /A "endCounter+=1")
 
-if ((%answer2% == 123) && (%endCounter% == %limit%))(
-	echo YES THAT IS CORRECT!
-	pause
-	cls
-	goto celebrate
-	)else(
-		echo correct keep going
-		set /A "i=%RANDOM%*30/32768+1"
-		pause
+		IF %answer2% == 123 IF %endCounter% == %limit% (
+				echo YES THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer2% == 123 ( 
+				echo Correct keep going
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer1% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer1% == 123 (  
+		echo That is incorrect!
+		pause 
 		cls
-		goto %i%
-	)
-
-if %answer2% == x (  
-	cls
-	goto portList
-)else (  
-	echo sorry it is wrong answer try again
-	pause 
-	cls
-	goto start)
-
-
-
+		goto start
+		)
 
 :Q3
 echo -------------------------------------------
