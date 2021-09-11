@@ -70,9 +70,9 @@ if %choose% == 2 goto exit
 if %choose% == x goto portList
 if %choose% == u goto updates
 IF NOT %choose% == x (  
-		echo.
-		echo That is not a valid option
-		pause >nul
+		REM echo.
+		REM echo That is not a valid option
+		REM pause >nul
 		cls
 		goto start
 		)
@@ -120,10 +120,10 @@ echo.    RDP^|3389........Remote Desktop Protocol
 echo.    RTP^|5004/5005*..Real-time Transport Protocol
 echo.    SIP^|5060/5061*..Session Initiation Protocol
 echo.
-echo.
 echo.*New ports added based on older version game
 echo.
-pause
+echo Press any key to go back to the main menu...
+pause >nul
 goto :start
 
 :updates
@@ -131,29 +131,30 @@ cls
 echo -------------------------------------------------------------------------------
 echo                                   Notes
 echo -------------------------------------------------------------------------------
-echo V1 Author: FAYCEL RAMDA / ???
-echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14
+echo.
+echo V1 DEV: FAYCEL RAMDA / ???
+echo V2 DEV: ADAM KIM / CYBERSECURITY 2021-NY-14
 echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
 echo.
 echo -------------------------------------------------------------------------------
 echo                                v2.0 UPDATES
 echo -------------------------------------------------------------------------------
+echo.
 echo -Randomize mode has been added, questions can now be randomized
 echo -Removed welcome screen and username input (removed fluff)
 echo -Edited or removed prompts that included usernames (removed fluff)
 echo -Added a port list reference page, added more ports based on default questions
 echo -Fixed typos
-echo -Fixed game crashing for invalid data input or blank input such as pressing enter
+echo -Fixed game crashing for invalid data input (blank input such as pressing enter)
 echo -Included prompts for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
-echo -Can add more port questions based on COMPTIA STUDY GUIDE (learners must request this for a dollar)
-echo 
-echo
-echo
+echo -Can add more port questions based on COMPTIA STUDY GUIDE 
+echo  (learners must request this for a dollar)
 echo.
-pause
+echo Press any key to go back to the main menu...
+pause >nul
 goto :start
 
 
@@ -267,13 +268,13 @@ echo . 110
 
 	set /p answer1= SSH port number is :
 		IF %answer1% == 22 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer1% == 22 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
 				set /A "index+=1"
@@ -310,13 +311,13 @@ echo . 443
 
 	set /p answer2= NTP port number is :
 		IF %answer2% == 123 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer2% == 123 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -349,13 +350,13 @@ echo . 161
 
 	set /p answer3= TFTP port number is :
 		IF %answer3% == 69 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer3% == 69 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -393,13 +394,13 @@ echo . 23
 
 	set /p answer4= Telnet port number is :
 		IF %answer4% == 23 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer4% == 23 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -437,13 +438,13 @@ echo . 123
 
 	set /p answer5= DNS port number is :
 		IF %answer5% == 53 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer5% == 53 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -482,13 +483,13 @@ echo . 203
 
 	set /p answer6= HTTP port number is :
 		IF %answer6% == 80 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer6% == 80 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -524,13 +525,13 @@ echo . 443
 
 	set /p answer7= HTTPS port number is :
 		IF %answer7% == 443 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer7% == 443 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -569,19 +570,19 @@ echo . 25
 
 	set /p answer8= FTP port number is : 
 		IF %answer8% == 20 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT! (but do you know the other one though?)
+				echo YES, THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
 				goto finish
 		)
 		IF %answer8% == 21 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT! (but do you know the other one though?)
+				echo YES, THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
 				goto finish
 		)
 		IF %answer8% == 20 IF %answer8% == 21 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -616,13 +617,13 @@ echo . 123
 
 	set /p answer9= IMAP4 port number is : 
 		IF %answer9% == 143 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer9% == 143 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -657,13 +658,13 @@ echo . 25
 
 	set /p answer10= SMTP port number is : 
 		IF %answer10% == 25 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer10% == 25 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -700,13 +701,13 @@ echo . 110
 
 	set /p answer11= SCP port number is :
 		IF %answer11% == 22 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer11% == 22 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -742,13 +743,13 @@ echo . 443
 
 	set /p answer12= RDP port number is :
 		IF %answer12% == 3389 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer12% == 3389 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -784,13 +785,13 @@ echo . 161
 
 	set /p answer13= RTSP port number is :
 		IF %answer13% == 554 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer13% == 554 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -826,13 +827,13 @@ echo . 23
 
 	set /p answer14= IMAP port number is :
 		IF %answer14% == 143 IF %endCounter% == %limit% (
-						echo YES THAT IS CORRECT!
+						echo YES, THAT IS CORRECT!
 						pause
 						cls
 						goto finish
 				)
 				IF %answer14% == 143 ( 
-						echo Correct keep going
+						echo CORRECT, KEEP GOING!
 						set /A "endCounter+=1"
 						set /A "i=%RANDOM%*30/32768+1"
 						set /A "index+=1"
@@ -867,13 +868,13 @@ echo . 119
 
 	set /p answer15= NNTP port number is :
 		IF %answer15% == 119 IF %endCounter% == %limit% (
-						echo YES THAT IS CORRECT!
+						echo YES, THAT IS CORRECT!
 						pause
 						cls
 						goto finish
 				)
 				IF %answer15% == 119 ( 
-						echo Correct keep going
+						echo CORRECT, KEEP GOING!
 						set /A "endCounter+=1"
 						set /A "i=%RANDOM%*30/32768+1"
 						set /A "index+=1"
@@ -909,13 +910,13 @@ echo . 203
 
 	set /p answer16= rsh port number is : 
 		IF %answer16% == 514 IF %endCounter% == %limit% (
-						echo YES THAT IS CORRECT!
+						echo YES, THAT IS CORRECT!
 						pause
 						cls
 						goto finish
 				)
 				IF %answer16% == 514 ( 
-						echo Correct keep going
+						echo CORRECT, KEEP GOING!
 						set /A "endCounter+=1"
 						set /A "i=%RANDOM%*30/32768+1"
 						set /A "index+=1"
@@ -950,13 +951,13 @@ echo . 110
 
 	set /p answer17=  POP3 port number is : 
 		IF %answer17% == 110 IF %endCounter% == %limit% (
-						echo YES THAT IS CORRECT!
+						echo YES, THAT IS CORRECT!
 						pause
 						cls
 						goto finish
 				)
 				IF %answer17% == 110 ( 
-						echo Correct keep going
+						echo CORRECT, KEEP GOING!
 						set /A "endCounter+=1"
 						set /A "i=%RANDOM%*30/32768+1"
 						set /A "index+=1"
@@ -991,13 +992,13 @@ echo . 25
 
 set /p answer18= SNMP port number is : 
 IF %answer18% == 161 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer18% == 161 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1032,13 +1033,13 @@ echo . 123
 
 set /p answer19= SNMP Trap port number is : 
 IF %answer19% == 162 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer19% == 162 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1076,13 +1077,13 @@ echo . 110
 
 set /p answer20= SNTP port number is :
 IF %answer20% == 123 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer20% == 123 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1121,7 +1122,7 @@ if %answer21% == 139 set result=true
 if %answer21% == 137 set result=true
 if %answer21% == 138 set result=true
 if "%result%" == "true" ( 
-	echo Correct keep going
+	echo CORRECT, KEEP GOING!
 	pause 
 	cls
 	goto Q22 
@@ -1130,7 +1131,7 @@ if %answer21% == x (
 	cls
 	goto portList
 )else (  
-	echo sorry it is wrong answer try again
+	echo That's incorrect, please try again
 	pause 
 	cls
 	goto start)
@@ -1156,7 +1157,7 @@ set result=false
 if %answer22% == 67 set result=true
 if %answer22% == 68 set result=true
 if "%result%" == "true" ( 
-	echo Correct keep going
+	echo CORRECT, KEEP GOING!
 	pause 
 	cls
 	goto Q23 
@@ -1165,7 +1166,7 @@ if %answer22% == x (
 	cls
 	goto portList
 )else (  
-	echo sorry it is wrong answer try again
+	echo That's incorrect, please try again
 	pause 
 	cls
 	goto start)
@@ -1186,13 +1187,13 @@ echo . 23
 
 set /p answer23= H.323 port number is :
 IF %answer23% == 1720 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer23% == 1720 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1229,13 +1230,13 @@ echo . 123
 
 set /p answer24= LDAP port number is :
 IF %answer24% == 389 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer24% == 389 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1270,13 +1271,13 @@ echo . 203
 
 set /p answer25= LDAPS port number is : 
 IF %answer25% == 636 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer25% == 636 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1315,7 +1316,7 @@ set result=false
 if %answer26% == 2427 set result=true
 if %answer26% == 2727 set result=true
 if "%result%" == "true" ( 
-	echo Correct keep going
+	echo CORRECT, KEEP GOING!
 	pause 
 	cls
 	goto Q27 
@@ -1324,7 +1325,7 @@ if %answer26% == x (
 	cls
 	goto portList
 )else (  
-	echo sorry it is wrong answer try again
+	echo That's incorrect, please try again
 	pause 
 	cls
 	goto start)
@@ -1351,7 +1352,7 @@ if %answer27% == 5004 set result=true
 if %answer27% == 5005 set result=true
 
 if "%result%" == "true" ( 
-	echo Correct keep going
+	echo CORRECT, KEEP GOING!
 	pause 
 	cls
 	goto Q28 
@@ -1360,7 +1361,7 @@ if %answer27% == x (
 	cls
 	goto portList
 )else (  
-	echo sorry it is wrong answer try again
+	echo That's incorrect, please try again
 	pause 
 	cls
 	goto start)
@@ -1381,13 +1382,13 @@ echo . 22
 
 set /p answer28= SFTP port number is : 
 IF %answer28% == 22 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer28% == 22 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1427,7 +1428,7 @@ if %answer29% == 5061 set result=true
 if %answer29% == 5060 set result=true
 
 if "%result%" == "true" ( 
-	echo Correct keep going
+	echo CORRECT, KEEP GOING!
 	pause 
 	cls
 	goto Q30 
@@ -1436,7 +1437,7 @@ if %answer29% == x (
 	cls
 	goto portList
 )else (  
-	echo sorry it is wrong answer try again
+	echo That's incorrect, please try again
 	pause 
 	cls
 	goto start)
@@ -1457,13 +1458,13 @@ echo . 445
 
 set /p answer30= SMB port number is : 
 IF %answer30% == 445 IF %endCounter% == %limit% (
-				echo YES THAT IS CORRECT!
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
 				goto finish
 		)
 		IF %answer30% == 445 ( 
-				echo Correct keep going
+				echo CORRECT, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1527,9 +1528,9 @@ if %finish% == x (
 	goto portList
 )
 IF NOT %finish% == x (  
-		echo.
-		echo That is not a valid option
-		pause >nul
+		REM echo.
+		REM echo That is not a valid option
+		REM pause >nul
 		cls
 		goto finish
 		)
