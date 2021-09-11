@@ -200,12 +200,13 @@ set /A "i=%RANDOM%*30/32768+1"
 
 REM WE USE COUNTERS AND CHECK FOR 30 CORRECT ANSWERS, WE DON'T HAVE LOGIC TO REMOVE DUPLICATE QUESTIONS.
 REM DUPLICATE QUESTIONS ARE STILL A GREAT EFFECTIVE METHOD IN REINFORCING MATERIAL ON A LEARNER
+REM INDEX IS IMPORTANT TO KEEP QUESTION # TO DYNAMICALLY CHANGE.
 
 REM DECLARE FLAGS:
 set "generateArray=true"
 set "dupFlag=false"
 set "endCounter=0"
-set "index=0"
+set "index=1"
 set "limit=30"
 
 REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
@@ -233,7 +234,7 @@ echo ----------------------------------------
 
 :Q1
 echo -------------------------------------------------------------------------------
-echo Question 1                 					(Score %endCounter% / %limit%)
+echo Question %index%                 					(Score %endCounter% / %limit%)
 echo SSH (Secure Shell)- TCP/UDP
 echo used for secure logins, file transfers
 echo (scp, sftp) and port forwarding
@@ -255,6 +256,7 @@ echo . 110
 				echo Correct keep going
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
+				set /A "index+=1"
 				pause 
 				cls
 				goto Q2
@@ -276,7 +278,7 @@ echo.
 
 :Q2
 echo -----------------------------------------
-echo Question 2                 (Score %endCounter% / %limit%)
+echo Question %index%                (Score %endCounter% / %limit%)
 echo NTP (Network Time Protocol) - UDP
 echo used for time synchronization
 echo -----------------------------------------
@@ -539,39 +541,20 @@ echo . 20
 echo . 21
 echo . 25
 
-set /p answer8= FTP port number is : 
-set result=false
-if %answer8% == 20 set result=true
-if %answer8% == 21 set result=true
-if "%result%" == "true" (
-	echo Correct keep going
-	pause 
-	cls
-	goto Q9
-)
-if %answer8% == x (  
-	cls
-	goto portList
-)else (  
-	echo sorry it is wrong answer try again
-	pause 
-	cls
-	goto start)
-
-
-		IF %answer8% == 20  %endCounter% == %limit% (
+	set /p answer8= FTP port number is : 
+		IF %answer8% == 20 IF %endCounter% == %limit% (
 				echo YES THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
 				goto finish
 		)
-		IF %answer8% == 21  %endCounter% == %limit% (
+		IF %answer8% == 21 IF %endCounter% == %limit% (
 				echo YES THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
 				goto finish
 		)
-		IF %answer8% == 20 ( 
+		IF %answer8% == 20 IF %answer8% == 21 ( 
 				echo Correct keep going
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
@@ -579,19 +562,11 @@ if %answer8% == x (
 				cls
 				goto Q%i%
 		)
-		IF %answer8% == 21 ( 
-			echo Correct keep going
-			set /A "endCounter+=1"
-			set /A "i=%RANDOM%*30/32768+1"
-			pause 
-			cls
-			goto Q%i%
-		)
 		IF %answer8% == x (  
 				cls
 				goto portList
 		)
-		IF NOT %answer8% == 20 (  
+		IF NOT %answer8% == 20 IF NOT %answer8% == 21(  
 		echo That is incorrect!
 		pause 
 		cls
