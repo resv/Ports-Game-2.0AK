@@ -12,12 +12,12 @@ REM ORIGINAL SOURCECODE AVAILABLE @ VWWW.GITHUB.COM/RESV
 REM NEXT CYCLE STUDENTS CAN MAKE THIS CODE MORE EFFICIENT...
 
 REM ---------------------------v2 UPDATES-----------------------------------------------------------------------------------------
-REM -BYPASSED WELCOME SCREEN & NAME INPUT (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
-REM -REMOVED STATEMENTS WITH "%username&" ACCORDINGLY
-REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
-REM -ADDED NEW PORTS TO PORTLIST BASED ON CURRENT QUESTIONS
-REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
 REM -ADDED QUESTION RANDOMIZER ALGORITHM
+REM -BYPASSED WELCOME SCREEN & NAME INPUT (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
+REM -REMOVED STATEMENTS WITH "%username&"
+REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
+REM -ADDED NEW PORTS TO PORTLIST BASED ON PRIOR DEV'S QUESTIONS
+REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
 REM -MODIFED FINISH PAGE (OLD ONE WAS VERY WEIRD)
 REM -MODIFIED DEFAULT WINDOW SIZE TO BE WIDER, MODIFIED BACKGROUND COLOR TO BE EASIER ON THE EYES
 REM -ADDED SCORE TO KEEP TRACK DURING RANDOM MODE
@@ -71,7 +71,7 @@ if %choose% == x goto portList
 if %choose% == u goto updates
 IF NOT %choose% == x (  
 		echo.
-		echo Please select a valid option
+		echo That is not a valid option
 		pause >nul
 		cls
 		goto start
@@ -135,20 +135,23 @@ echo V1 Author: FAYCEL RAMDA / ???
 echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14
 echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
-echo NEXT CYCLE CAN MAKE THIS MORE EFFICIENT...
 echo.
 echo -------------------------------------------------------------------------------
-echo                                v2 UPDATES
+echo                                v2.0 UPDATES
 echo -------------------------------------------------------------------------------
 echo -Randomize mode has been added, questions can now be randomized
 echo -Removed welcome screen and username input (removed fluff)
 echo -Edited or removed prompts that included usernames (removed fluff)
 echo -Added a port list reference page, added more ports based on default questions
 echo -Fixed typos
+echo -Fixed game crashing for invalid data input or blank input such as pressing enter
 echo -Included prompts for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
-echo -Added more port questions based on COMPTIA STUDY GUIDE (Can add if people want this)
+echo -Can add more port questions based on COMPTIA STUDY GUIDE (learners must request this for a dollar)
+echo 
+echo
+echo
 echo.
 pause
 goto :start
@@ -1525,7 +1528,7 @@ if %finish% == x (
 )
 IF NOT %finish% == x (  
 		echo.
-		echo Please select a valid option
+		echo That is not a valid option
 		pause >nul
 		cls
 		goto finish
