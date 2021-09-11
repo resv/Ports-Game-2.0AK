@@ -1485,15 +1485,16 @@ IF %answer30% == 445 IF %endCounter% == %limit% (
 
 
 REM SET NEW VARIABLE FOR FINISH PAGE TO USE IT'S OWN VARIABLE INSTEAD OF CARRY IT FROM Q30. 
-REM REMOVED USERNAME VARIABLE FLUFF, CHANGED USER INPUT VARIABLE FOR CONTINUITY
-REM ADDED OPTION FOR USER TO EXIT OR EXIT AND CONGRATS MUSIC
+REM REMOVED USERNAME FLUFF
+REM ADDED ALTERNATE CELEBRATION CEREMONY
 
 :finish
-echo ----------------------FINISH---------------------------
-echo I'M PROUD OF YOU
+echo -------------------------------------------------------------------------------
+echo                               CONGRATULATIONS!
+echo -------------------------------------------------------------------------------
 echo.
-REM echo %username%
-echo Please choose a selection:
+echo YOU SHOULD BE PROUD OF YOURSELF!
+echo.
 echo.
 echo [1] to retake test
 echo.
@@ -1512,13 +1513,23 @@ if %finish% == 2 (
 	goto exit
 )
 if %finish% == 3 (  
+	cls
 	echo.
 	echo.
-	echo You deserve this
-	echo.
-	echo Press any key to start the celebration!
-	echo.
-	echo.
+	echo                   You deserve this...     
+echo(
+echo         #        #        #        #         #      
+echo      ._^|_^|______^|_^|______^|_^|______^|_^|_______^|_^|__.
+echo      ############################################
+echo      ^|                                          ^|
+echo      ############################################
+echo      ############################################
+echo      ^|                                          ^|
+echo      ############################################
+echo      ^|__________________________________________^|
+echo.
+echo.
+echo         Press any key to start the celebration!
 	pause >nul
 	cls
 	goto celebrate
@@ -1528,9 +1539,6 @@ if %finish% == x (
 	goto portList
 )
 IF NOT %finish% == x (  
-		REM echo.
-		REM echo That is not a valid option
-		REM pause >nul
 		cls
 		goto finish
 		)
@@ -1539,11 +1547,11 @@ cls
 exit
 
 
-:celebrate
+
+
 REM OKAY THIS IS SOME WEIRD IMAGE REDIRECT ON TO THE USER FROM PRIOR DEVELOPER....REMOVED FOR SOMETHING MORE PLEASING AND TRUSTED
 REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algerian-Hacker.png
-
+:celebrate
 start https://youtu.be/SC4xMk98Pdc?t=37
-
 exit
 
