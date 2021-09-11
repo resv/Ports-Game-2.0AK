@@ -18,7 +18,7 @@ REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
 REM -ADDED NEW PORTS TO PORTLIST BASED ON CURRENT QUESTIONS
 REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
 REM -ADDED QUESTION RANDOMIZER ALGORITHM
-REM -MODIFED FINISH PAGE
+REM -MODIFED FINISH PAGE (OLD ONE WAS VERY WEIRD)
 REM -MODIFIED DEFAULT WINDOW SIZE TO BE WIDER, MODIFIED BACKGROUND COLOR TO BE EASIER ON THE EYES
 REM -ADDED SCORE TO KEEP TRACK DURING RANDOM MODE
 REM -ADDED COMMENTS FOR DOCUMENTATION IN SOURCE CODE
@@ -41,24 +41,24 @@ set "limit=30"
 REM WE GO RIGHT INTO THE START SELECTION SCREEN
 :start
 cls
-echo.-------------------------------------
-echo       TCP/UDP ports Number v2.0
-echo.-------------------------------------
+echo -------------------------------------------------------------------------------
+echo                          TCP/UDP ports Number v2.0B
+echo -------------------------------------------------------------------------------
 echo.
-echo Welcome to TCP/UDP PORTS TEST
+echo  Welcome to TCP/UDP PORTS TEST
 echo. 
-echo %limit% correct consecutive answers will take you to the end
+echo  %limit% correct consecutive answers will take you to the end
 echo. 
-echo.
+echo. (THIS IS STILL BEING TESTED, SUBMIT BUGS TO TELEGRAM DM OR AKIM456@GMAIL.COM)
 echo.
 
 REM MODIFIED MENU WORDING, ADDED AN OPTION TO EXIT TEST AND SEE ALL PORTS, ADDED UPDATES OPTION
-echo Please choose a selection:
+echo  Please choose a selection:
 echo.
-echo [1] to begin test
-echo [2] to exit test
-echo [x] to view port list (Can be used at any time)
-echo [u] to view updates
+echo  [1] to begin test
+echo  [2] to exit test
+echo  [x] to view port list (Can be used at any time)
+echo  [u] to view updates
 
 REM ADDED LINE BREAK FOR CLARITY AND EDITED PROMPT
 echo.
@@ -71,9 +71,9 @@ if %choose% == u goto updates
 REM ADDED PORTLIST PAGE (ADDED PORTS 119,138,162,,445,514,554,1720,2427/2727,5004/5005,5060/5061 BASED ON TEST Qs)
 :portList
 cls
-echo.-------------------------------------
-echo         PORT LIST
-echo.-------------------------------------
+echo -------------------------------------------------------------------------------
+echo                               PORT LIST
+echo -------------------------------------------------------------------------------
 echo.    FTP^|20/21.......Sends Files
 echo.    SSH^|22..........Secure Shell (Secure Remote)
 echo.Telenet^|23..........Unsecure Remote Access Console
@@ -105,29 +105,34 @@ echo.    RTP^|5004/5005*..Real-time Transport Protocol
 echo.    SIP^|5060/5061*..Session Initiation Protocol
 echo.
 echo.
-echo.*New ports added based on questions
+echo.*New ports added based on older version game
 echo.
 pause
 goto :start
 
 :updates
 cls
-echo ------------------------------Notes-----------------------------------------
-echo V1 Author: FAYCEL RAMDA
-echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14 
+echo -------------------------------------------------------------------------------
+echo                                   Notes
+echo -------------------------------------------------------------------------------
+echo V1 Author: FAYCEL RAMDA / ???
+echo V2 Author: ADAM KIM / CYBERSECURITY 2021-NY-14
+echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
 echo NEXT CYCLE CAN MAKE THIS MORE EFFICIENT...
 echo.
-echo ---------------------------v2 UPDATES---------------------------------------
+echo -------------------------------------------------------------------------------
+echo                                v2 UPDATES
+echo -------------------------------------------------------------------------------
 echo -Randomize mode has been added, questions can now be randomized
 echo -Removed welcome screen and username input (removed fluff)
 echo -Edited or removed prompts that included usernames (removed fluff)
-echo -Added a port list reference page, added more ports based on questions
-echo -Fixed typos on certain questions
+echo -Added a port list reference page, added more ports based on default questions
+echo -Fixed typos
 echo -Included prompts for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
-echo ----------------------------------------------------------------------------
+echo -Added more port questions based on COMPTIA STUDY GUIDE (Can add if people want this)
 echo.
 pause
 goto :start
@@ -136,19 +141,23 @@ goto :start
 REM "begin" PAGE WILL INITIATE RANDOM ALGORITHM AND GENERATE THE ARRAY
 :begin
 cls
-echo.----------------------------------------
-echo           TCP/UDP ports Number
-echo.----------------------------------------
+echo -------------------------------------------------------------------------------
+echo                              TCP/UDP ports Number
+echo -------------------------------------------------------------------------------
 
-echo In TCP/IP and UDP networks, a port is an 
-echo endpoint to a logical connection and the 
-echo way a client program specifies a specific
-echo server program on a computer in a network.
-echo The portnumber identifies what type of 
-echo port it is.
+echo  In TCP/IP and UDP networks, a port is an 
+echo  endpoint to a logical connection and the 
+echo  way a client program specifies a specific
+echo  server program on a computer in a network.
+echo  The portnumber identifies what type of 
+echo  port it is.
 echo.
 echo.
-echo (Randomizing questions...)
+echo. You will see duplicates, to reinforce you as a learner...
+echo.
+echo  (Randomizing questions...)
+echo.
+echo.
 echo.
 
 
@@ -190,7 +199,7 @@ REM THIS IS THE RANDOMIZER ALGORYTHM THAT WILL RANDOMIZE AFTER EACH QUESTION (mu
 set /A "i=%RANDOM%*30/32768+1"
 
 REM WE USE COUNTERS AND CHECK FOR 30 CORRECT ANSWERS, WE DON'T HAVE LOGIC TO REMOVE DUPLICATE QUESTIONS.
-REM THIS METHOD IS STILL EFFECTIVE IN REINFORCING MATERIAL ON A LEARNER
+REM DUPLICATE QUESTIONS ARE STILL A GREAT EFFECTIVE METHOD IN REINFORCING MATERIAL ON A LEARNER
 
 REM DECLARE FLAGS:
 set "generateArray=true"
@@ -200,8 +209,8 @@ set "index=0"
 set "limit=30"
 
 REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
-REM THIS INCREMENTS END COUNTER, IF REACHED THE LIMIT, we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
-REM set /A "i=%RANDOM%*30/32768+1"
+REM THIS INCREMENTS ENDCOUNTER, IF REACHED THE LIMIT(30 QUESTIONS), we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
+REM set /A "i=%RANDOM%*30/32768+1"  (30 needs to be changed to more questions)
 REM set /A "endCounter+=1"
 REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
@@ -215,19 +224,21 @@ REM ------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
 REM -Q7 FIXED TYPO "HHTPS"
 REM -PROMPT WORDING ADDED TO NOTIFY USER THERE ARE MORE THAN 1 ANSWER
-REM 
+REM ALL IF STATEMENTS RECODED FOR "AND" OPERATORS, FLOW CONTROL IN BATCH IS WEIRD, NO LOGICAL "ANDS" ARE POSSILBLE?!
+REM ALL IF STATEMENTS ARE NOT NESTED FOR BETTER LEGIBILITY, ALTHOUGH COULD BE NESTED IF YOU WISH...
 
 echo ----------------------------------------
 echo               let's begin
 echo ----------------------------------------
 
 :Q1
-echo -----------------------------------------
-echo Question 1                 (Score %endCounter% / %limit%)
+echo -------------------------------------------------------------------------------
+echo                              TCP/UDP ports Number
+echo Question 1                 					(Score %endCounter% / %limit%)
 echo SSH (Secure Shell)- TCP/UDP
 echo used for secure logins, file transfers
 echo (scp, sftp) and port forwarding
-echo -----------------------------------------
+echo -------------------------------------------------------------------------------
 
 echo . 25
 echo . 21
