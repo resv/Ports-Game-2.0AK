@@ -239,7 +239,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q1
+goto Q8
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -573,13 +573,13 @@ echo . 25
 				echo YES, THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
-				goto finish
+				goto IF1
 		)
 		IF %answer8% == 21 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT! (but do you know the other one though?)
 				pause
 				cls
-				goto finish
+				goto IF2
 		)
 		IF %answer8% == 20 IF %answer8% == 21 ( 
 				echo CORRECT, KEEP GOING!
@@ -588,7 +588,7 @@ echo . 25
                 set /A "index+=1"
 				pause 
 				cls
-				goto Q%i%
+				goto IF3
 		)
 		IF %answer8% == x (  
 				cls
@@ -598,7 +598,7 @@ echo . 25
 		echo That is incorrect!
 		pause 
 		cls
-		goto start
+		goto IF4
 		)
 
 
@@ -1555,3 +1555,31 @@ REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algeri
 start https://youtu.be/SC4xMk98Pdc?t=37
 exit
 
+
+:IF1
+cls
+cls
+echo IF 1 WORKED, you input %answer8%
+pause >nul
+goto IF1
+
+:IF2
+cls
+cls
+echo IF 2 WORKED, you input %answer8%
+pause >nul
+goto IF2
+
+:IF3
+cls
+cls
+echo IF 3 WORKED, you input %answer8%
+pause >nul
+goto IF3
+
+:IF4
+cls
+cls
+echo IF 4 WORKED, you input %answer8%
+pause >nul
+goto IF4
