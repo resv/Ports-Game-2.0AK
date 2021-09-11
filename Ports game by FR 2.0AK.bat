@@ -239,7 +239,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q1
+goto Q22
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -562,34 +562,52 @@ echo FTP is built on a client-server model architecture using separate
 echo control and data connections between the client and the server. 
 echo -------------------------------------------------------------------------------
 echo.
-echo. (There are two valid answers)
+echo (There are two valid answers)
 echo . 22
 echo . 20
 echo . 21
 echo . 25
 
 	set /p answer8= FTP port number is : 
-		IF %answer8% == 20 IF %endCounter% == %limit% (
-				echo YES, THAT IS CORRECT but do you know the other one though?
-				pause
-				cls
-				goto IF1
-		)
 		IF %answer8% == 21 IF %endCounter% == %limit% (
-				echo YES, THAT IS CORRECT but do you know the other one though?
+				echo YES, THAT IS CORRECT!
 				pause
 				cls
-				goto IF2
+				goto finish
+		)
+		IF %answer8% == 21 ( 
+				echo CORRECT, KEEP GOING! IF2
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer8% == 20 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer8% == 20 ( 
+				echo CORRECT, KEEP GOING! IF4
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
 		)
 		IF %answer8% == x (  
 				cls
 				goto portList
 		)
-		IF NOT %answer8% == 20(  
+		IF NOT %answer8% == 21 (  
 		echo That is incorrect!
 		pause 
 		cls
-		goto IF4
+		goto start
 		)
 
 
@@ -800,8 +818,6 @@ echo . 161
 		cls
 		goto start
 		)
-
-
 
 :Q14
 echo -------------------------------------------------------------------------------
@@ -1098,7 +1114,7 @@ REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 :Q21
 echo -------------------------------------------------------------------------------
 echo Question %index%           				                
-echo NetBIOS (Network Basic Input/Output System) - TCP, UDP ( it has 3 ports)
+echo NetBIOS (Network Basic Input/Output System) - TCP, UDP (it has 3 ports)
 echo Provides network communication services for LANs that use NetBIOS
 echo -------------------------------------------------------------------------------
 echo (There are 3 valid answers)
@@ -1144,24 +1160,30 @@ echo . 65
 echo . 61
 
 set /p answer22= DHCP port number is :
-set result=false
-if %answer22% == 67 set result=true
-if %answer22% == 68 set result=true
-if "%result%" == "true" ( 
-	echo CORRECT, KEEP GOING!
-	pause 
-	cls
-	goto Q23 
-)
-if %answer22% == x (  
-	cls
-	goto portList
-)else (  
-	echo That's incorrect, please try again
-	pause 
-	cls
-	goto start)
-	
+		IF %answer22% == 67 ( 
+			echo.
+			set /p answer22b= %answer22% is correct, what is the other?
+			echo.
+		)
+			IF %answer22b% == 68 ( 
+				echo CORRECT!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer22% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer22% == 67 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
 
 :Q23
