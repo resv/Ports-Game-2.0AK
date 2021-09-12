@@ -1161,12 +1161,47 @@ echo . 61
 
 set /p answer22= DHCP port number is :
 		IF %answer22% == 67 ( 
-			echo.
-			set /p answer22b= %answer22% is correct, what is the other?
-			echo.
+				cls
+				goto Q22b
 		)
-			IF %answer22% == 68 ( 
-				echo CORRECT!
+		IF %answer22% == 68 (
+				cls
+				goto Q22c
+		)
+		IF %answer22% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer22% == 67 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+:Q22b
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo DHCP (Dynamic Host Configuration Protocol) - UDP
+echo Dynamically assigns IP address information
+echo (for example, IP address, subnet mask, DNS server�s IP address,
+echo and default gateway�s IP address) to a network device
+echo -------------------------------------------------------------------------------
+echo (There are 2 valid answers)
+echo . 67 (Correct)
+echo . 68
+echo . 65
+echo . 61
+
+set /p answer22b= 67 is correct, what is the other port number? 
+		IF %answer22b% == 68 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer22b% == 68 ( 
+				echo 67 and 68 are correct, keep going!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
@@ -1174,39 +1209,71 @@ set /p answer22= DHCP port number is :
 				cls
 				goto Q%i%
 		)
-			IF NOT %answer22% == 68 (  
-				echo That is incorrect!
-				pause 
-				cls
-				goto start
-				)
-REM ------------------------------------------
-
-			IF %answer22% == 68 ( 
-				echo.
-				set /p answer22= %answer22% is correct, what is the other?
-				echo.
-			)
-				IF %answer22% == 67 ( 
-					echo CORRECT!
-					set /A "endCounter+=1"
-					set /A "i=%RANDOM%*30/32768+1"
-					set /A "index+=1"
-					pause 
-					cls
-					goto Q%i%
-			)
-		IF %answer22% == x (  
+		IF %answer22b% == x (  
 				cls
 				goto portList
 		)
-		IF NOT %answer22% == 67 (  
+		IF %answer22b% == 67 (  
+		echo.
+		echo You have already chosen 67! What is the other?
+		pause >nul
+		cls
+		goto Q22b
+		)
+		IF NOT %answer22b% == 68 (  
 		echo That is incorrect!
-		pause
+		pause 
 		cls
 		goto start
 		)
 
+	
+:Q22c
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo DHCP (Dynamic Host Configuration Protocol) - UDP
+echo Dynamically assigns IP address information
+echo (for example, IP address, subnet mask, DNS server�s IP address,
+echo and default gateway�s IP address) to a network device
+echo -------------------------------------------------------------------------------
+echo (There are 2 valid answers)
+echo . 67
+echo . 68 (Correct)
+echo . 65
+echo . 61
+
+set /p answer22c= 68 is correct, what is the other port number? 
+		IF %answer22c% == 67 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer22c% == 67 ( 
+				echo 67 and 68 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer22c% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer22c% == 67 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+		IF %answer22c% == 68 (  
+		echo You have already chosen 68! What is the other?
+		pause >nul
+		cls
+		goto Q22c
+		)
 
 
 
