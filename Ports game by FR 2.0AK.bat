@@ -1165,7 +1165,7 @@ set /p answer22= DHCP port number is :
 			set /p answer22b= %answer22% is correct, what is the other?
 			echo.
 		)
-			IF %answer22b% == 68 ( 
+			IF %answer22% == 68 ( 
 				echo CORRECT!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
@@ -1174,16 +1174,41 @@ set /p answer22= DHCP port number is :
 				cls
 				goto Q%i%
 		)
+			IF NOT %answer22% == 68 (  
+				echo That is incorrect!
+				pause 
+				cls
+				goto start
+				)
+REM ------------------------------------------
+
+			IF %answer22% == 68 ( 
+				echo.
+				set /p answer22= %answer22% is correct, what is the other?
+				echo.
+			)
+				IF %answer22% == 67 ( 
+					echo CORRECT!
+					set /A "endCounter+=1"
+					set /A "i=%RANDOM%*30/32768+1"
+					set /A "index+=1"
+					pause 
+					cls
+					goto Q%i%
+			)
 		IF %answer22% == x (  
 				cls
 				goto portList
 		)
 		IF NOT %answer22% == 67 (  
 		echo That is incorrect!
-		pause 
+		pause
 		cls
 		goto start
 		)
+
+
+
 
 
 :Q23
