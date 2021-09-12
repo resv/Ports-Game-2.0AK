@@ -239,7 +239,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q26
+goto Q8
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -551,6 +551,8 @@ echo . 443
 		)
 
 
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
+
 
 :Q8
 echo -------------------------------------------------------------------------------
@@ -569,41 +571,119 @@ echo . 21
 echo . 25
 
 	set /p answer8= FTP port number is : 
-		IF %answer8% == 21 IF %endCounter% == %limit% (
-				echo YES, THAT IS CORRECT!
-				pause
-				cls
-				goto finish
-		)
-		IF %answer8% == 21 ( 
-				echo CORRECT, KEEP GOING! IF2
-				set /A "endCounter+=1"
-				set /A "i=%RANDOM%*30/32768+1"
-                set /A "index+=1"
-				pause 
-				cls
-				goto Q%i%
-		)
-		IF %answer8% == 20 IF %endCounter% == %limit% (
-				echo YES, THAT IS CORRECT!
-				pause
-				cls
-				goto finish
-		)
 		IF %answer8% == 20 ( 
-				echo CORRECT, KEEP GOING! IF4
-				set /A "endCounter+=1"
-				set /A "i=%RANDOM%*30/32768+1"
-                set /A "index+=1"
-				pause 
 				cls
-				goto Q%i%
+				goto Q8b
+		)
+		IF %answer8% == 21 (
+				cls
+				goto Q8c
 		)
 		IF %answer8% == x (  
 				cls
 				goto portList
 		)
 		IF NOT %answer8% == 21 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+:Q8b
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo FTP (File Transfer Protocol) - TCP
+echo (FTP) is a standard network protocol used for the transfer of
+echo computer files between a client and server on a computer network. 
+echo FTP is built on a client-server model architecture using separate 
+echo control and data connections between the client and the server. 
+echo -------------------------------------------------------------------------------
+echo.
+echo (There are two valid answers)
+echo . 22
+echo . 20 (Correct)
+echo . 21
+echo . 25
+
+set /p answer8b= 20 is correct, what is the other port number? 
+		IF %answer8b% == 21 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer8b% == 21 ( 
+				echo 20 and 21 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer8b% == x (  
+				cls
+				goto portList
+		)
+		IF %answer8b% == 20 (  
+		echo.
+		echo You have already chosen 20! What is the other?
+		pause >nul
+		cls
+		goto Q8b
+		)
+		IF NOT %answer8b% == 21 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+:Q8c
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo FTP (File Transfer Protocol) - TCP
+echo (FTP) is a standard network protocol used for the transfer of
+echo computer files between a client and server on a computer network. 
+echo FTP is built on a client-server model architecture using separate 
+echo control and data connections between the client and the server. 
+echo -------------------------------------------------------------------------------
+echo.
+echo (There are two valid answers)
+echo . 22
+echo . 20
+echo . 21 (Correct)
+echo . 25
+
+set /p answer8c= 21 is correct, what is the other port number? 
+		IF %answer8c% == 20 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer8c% == 20 ( 
+				echo 20 and 21 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer8c% == x (  
+				cls
+				goto portList
+		)
+		IF %answer8c% == 21 (  
+		echo.
+		echo You have already chosen 21! What is the other?
+		pause >nul
+		cls
+		goto Q8c
+		)
+		IF NOT %answer8c% == 20 (  
 		echo That is incorrect!
 		pause 
 		cls
