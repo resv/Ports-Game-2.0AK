@@ -239,7 +239,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q22
+goto Q26
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -1110,7 +1110,9 @@ IF %answer20% == 123 IF %endCounter% == %limit% (
 		)
 
 
-REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX FLAGGED FOR A LATER FIX
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
+
+
 :Q21
 echo -------------------------------------------------------------------------------
 echo Question %index%           				                
@@ -1143,7 +1145,7 @@ if %answer21% == x (
 	cls
 	goto start)
 
-REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX FLAGGED FOR A LATER FIX
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
 
 :Q22
 echo -------------------------------------------------------------------------------
@@ -1262,19 +1264,19 @@ set /p answer22c= 68 is correct, what is the other port number?
 				cls
 				goto portList
 		)
+		IF %answer22c% == 68 (  
+		echo.
+		echo You have already chosen 68! What is the other?
+		pause >nul
+		cls
+		goto Q22c
+		)
 		IF NOT %answer22c% == 67 (  
 		echo That is incorrect!
 		pause 
 		cls
 		goto start
 		)
-		IF %answer22c% == 68 (  
-		echo You have already chosen 68! What is the other?
-		pause >nul
-		cls
-		goto Q22c
-		)
-
 
 
 
@@ -1402,7 +1404,9 @@ IF %answer25% == 636 IF %endCounter% == %limit% (
 		)
 
 
-REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX FLAGGED FOR LATER
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
+
+
 :Q26
 echo -------------------------------------------------------------------------------
 echo Question %index%           				                
@@ -1417,26 +1421,121 @@ echo . 143
 echo . 2727
 
 set /p answer26= MGCP port number is : 
-set result=false
-if %answer26% == 2427 set result=true
-if %answer26% == 2727 set result=true
-if "%result%" == "true" ( 
-	echo CORRECT, KEEP GOING!
-	pause 
-	cls
-	goto Q27 
-)
-if %answer26% == x (  
-	cls
-	goto portList
-)else (  
-	echo That's incorrect, please try again
-	pause 
-	cls
-	goto start)
+		IF %answer26% == 2427 ( 
+				cls
+				goto Q26b
+		)
+		IF %answer26% == 2727 (
+				cls
+				goto Q26c
+		)
+		IF %answer26% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer26% == 2427 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+:Q26b
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo MGCP (Media Gateway Control Protocol) - UDP 
+echo Used as a call control and communication protocol
+echo for Voice over IP networks 
+echo -------------------------------------------------------------------------------
+echo (There are two valid answers)
+echo . 137
+echo . 2427 (Correct)
+echo . 143
+echo . 2727
+
+set /p answer26b= 2427 is correct, what is the other port number? 
+		IF %answer26b% == 2727 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer26b% == 2727 ( 
+				echo 2427 and 2727 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer26b% == x (  
+				cls
+				goto portList
+		)
+		IF %answer26b% == 2427 (  
+		echo.
+		echo You have already chosen 2427! What is the other?
+		pause >nul
+		cls
+		goto Q26b
+		)
+		IF NOT %answer26b% == 2727 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+:Q26c
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo MGCP (Media Gateway Control Protocol) - UDP 
+echo Used as a call control and communication protocol
+echo for Voice over IP networks 
+echo -------------------------------------------------------------------------------
+echo (There are two valid answers)
+echo . 137
+echo . 2427
+echo . 143
+echo . 2727 (Correct)
+
+set /p answer26c= 2727 is correct, what is the other port number? 
+		IF %answer26c% == 2427 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer26c% == 2427 ( 
+				echo 2427 and 2727 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer26c% == x (  
+				cls
+				goto portList
+		)
+		IF %answer26c% == 2727 (  
+		echo.
+		echo You have already chosen 2727! What is the other?
+		pause >nul
+		cls
+		goto Q26c
+		)
+		IF NOT %answer26c% == 2427 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
 
-REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX FLAGGED FOR LATER
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
 
 :Q27
 echo -------------------------------------------------------------------------------
@@ -1452,25 +1551,119 @@ echo . 5005
 echo . 137
 
 set /p answer27= RTP port number is : 
-set result=false
-if %answer27% == 5004 set result=true
-if %answer27% == 5005 set result=true
+		IF %answer27% == 5004 ( 
+				cls
+				goto Q27b
+		)
+		IF %answer27% == 5005 (
+				cls
+				goto Q27c
+		)
+		IF %answer27% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer27% == 5004 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
-if "%result%" == "true" ( 
-	echo CORRECT, KEEP GOING!
-	pause 
-	cls
-	goto Q28 
-)
-if %answer27% == x (  
-	cls
-	goto portList
-)else (  
-	echo That's incorrect, please try again
-	pause 
-	cls
-	goto start)
+:Q27b
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo RTP (Real-time Transport Protocol) - TCP, UDP
+echo Used for delivering media-based data 
+echo (such as Voice over IP) through the network 
+echo -------------------------------------------------------------------------------
 
+echo . 5004 (Correct)
+echo . 1720
+echo . 5005
+echo . 137
+
+set /p answer27b= 5004 is correct, what is the other port number? 
+		IF %answer27b% == 5005 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer27b% == 5005 ( 
+				echo 5004 and 5005 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer27b% == x (  
+				cls
+				goto portList
+		)
+		IF %answer27b% == 5004 (  
+		echo.
+		echo You have already chosen 5004! What is the other?
+		pause >nul
+		cls
+		goto Q27b
+		)
+		IF NOT %answer27b% == 5005 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+
+:Q27c
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo RTP (Real-time Transport Protocol) - TCP, UDP
+echo Used for delivering media-based data 
+echo (such as Voice over IP) through the network 
+echo -------------------------------------------------------------------------------
+
+echo . 5004
+echo . 1720
+echo . 5005 (Correct)
+echo . 137
+
+set /p answer27c= 5005 is correct, what is the other port number? 
+		IF %answer27c% == 5004 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer27c% == 5004 ( 
+				echo 5004 and 5005 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer27c% == x (  
+				cls
+				goto portList
+		)
+		IF %answer27c% == 5005 (  
+		echo.
+		echo You have already chosen 5005! What is the other?
+		pause >nul
+		cls
+		goto Q27c
+		)
+		IF NOT %answer27c% == 5004 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
 
 :Q28
@@ -1513,7 +1706,9 @@ IF %answer28% == 22 IF %endCounter% == %limit% (
 		)
 	
 
-REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX flaggged for later
+REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
+
+
 :Q29
 echo -------------------------------------------------------------------------------
 echo Question %index%           				                
@@ -1527,25 +1722,121 @@ echo . TCP 137
 echo . UDP 5060
 echo . UDP 1720
 
-set /p answer29=  SIP port number is : 
-set result=false
-if %answer29% == 5061 set result=true
-if %answer29% == 5060 set result=true
+set /p answer29= SIP port number is : 
+		IF %answer29% == 5061 ( 
+				cls
+				goto Q29b
+		)
+		IF %answer29% == 5060 (
+				cls
+				goto Q29c
+		)
+		IF %answer29% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer29% == 5061 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
-if "%result%" == "true" ( 
-	echo CORRECT, KEEP GOING!
-	pause 
-	cls
-	goto Q30 
-)
-if %answer29% == x (  
-	cls
-	goto portList
-)else (  
-	echo That's incorrect, please try again
-	pause 
-	cls
-	goto start)
+:Q29b
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo SIP (Session Initiation Protocol) - TCP, UDP
+echo Used to create and end sessions for one or more media connections, 
+echo including Voice over IP calls
+echo -------------------------------------------------------------------------------
+echo (There are two valid answers)
+echo . TCP 5061 (Correct)
+echo . TCP 137
+echo . UDP 5060
+echo . UDP 1720
+
+set /p answer29b= 5061 is correct, what is the other port number? 
+		IF %answer29b% == 5060 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer29b% == 5060 ( 
+				echo 5061 and 5060 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer29b% == x (  
+				cls
+				goto portList
+		)
+		IF %answer29b% == 5061 (  
+		echo.
+		echo You have already chosen 5061! What is the other?
+		pause >nul
+		cls
+		goto Q29b
+		)
+		IF NOT %answer29b% == 5060 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
+
+:Q29c
+echo -------------------------------------------------------------------------------
+echo Question %index%           				                
+echo SIP (Session Initiation Protocol) - TCP, UDP
+echo Used to create and end sessions for one or more media connections, 
+echo including Voice over IP calls
+echo -------------------------------------------------------------------------------
+echo (There are two valid answers)
+echo . TCP 5061
+echo . TCP 137
+echo . UDP 5060 (Correct)
+echo . UDP 1720
+
+set /p answer29c= 5060 is correct, what is the other port number? 
+		IF %answer29c% == 5061 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer29c% == 5061 ( 
+				echo 5060 and 5061 are correct, keep going!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer29c% == x (  
+				cls
+				goto portList
+		)
+		IF %answer29c% == 5060 (  
+		echo.
+		echo You have already chosen 5060! What is the other?
+		pause >nul
+		cls
+		goto Q29c
+		)
+		IF NOT %answer29c% == 5061 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
+
 
 
 
