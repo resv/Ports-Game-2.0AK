@@ -1932,7 +1932,7 @@ set /p answer29c= 5060 is correct, what is the other port number?
 :Q30
 echo -------------------------------------------------------------------------------
 echo Question %index%           				                
-echo SMB (Server Message Block) - TCP 445 
+echo SMB (Server Message Block) - TCP
 echo Used to share files, printers, and other network resources
 echo -------------------------------------------------------------------------------
 
