@@ -239,7 +239,7 @@ REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
 
 pause 
 cls
-goto Q8
+goto Q%i%
 
 
 REM ------------------ALL QUESTION COMMENTS-----------------------------------
@@ -788,7 +788,7 @@ echo . 21
 echo . 22
 echo . 110
 
-	set /p answer11= SCP port number is :
+	set /p answer11= SCP port number is : 
 		IF %answer11% == 22 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -830,7 +830,7 @@ echo . 143
 echo . 3389
 echo . 443
 
-	set /p answer12= RDP port number is :
+	set /p answer12= RDP port number is : 
 		IF %answer12% == 3389 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -872,7 +872,7 @@ echo . 67
 echo . 554
 echo . 161
 
-	set /p answer13= RTSP port number is :
+	set /p answer13= RTSP port number is : 
 		IF %answer13% == 554 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -912,7 +912,7 @@ echo . 110
 echo . 23
 
 
-	set /p answer14= IMAP port number is :
+	set /p answer14= IMAP port number is : 
 		IF %answer14% == 143 IF %endCounter% == %limit% (
 						echo YES, THAT IS CORRECT!
 						pause
@@ -953,7 +953,7 @@ echo . 143
 echo . 53
 echo . 119
 
-	set /p answer15= NNTP port number is :
+	set /p answer15= NNTP port number is : 
 		IF %answer15% == 119 IF %endCounter% == %limit% (
 						echo YES, THAT IS CORRECT!
 						pause
@@ -1162,7 +1162,7 @@ echo . 123
 echo . 22
 echo . 110
 
-set /p answer20= SNTP port number is :
+set /p answer20= SNTP port number is : 
 IF %answer20% == 123 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -1203,8 +1203,9 @@ echo . TCP 139
 echo . UDP 137
 echo . TCP 136
 echo . UDP 138
+echo.
 
-set /p answer21= Which is NOT a NetBIOS port :
+set /p answer21= Which is ***NOT*** a NetBIOS port : 
 IF %answer21% == 136 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -1212,10 +1213,12 @@ IF %answer21% == 136 IF %endCounter% == %limit% (
 				goto finish
 		)
 		IF %answer21% == 136 ( 
-				echo CORRECT, KEEP GOING!
+				echo.
+				echo CORRECT 136 is not a part of the NetBIOS ports, KEEP GOING!
 				set /A "endCounter+=1"
 				set /A "i=%RANDOM%*30/32768+1"
                 set /A "index+=1"
+				echo.
 				pause 
 				cls
 				goto Q%i%
@@ -1378,7 +1381,7 @@ echo . 80
 echo . 110
 echo . 23
 
-set /p answer23= H.323 port number is :
+set /p answer23= H.323 port number is : 
 IF %answer23% == 1720 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -1421,7 +1424,7 @@ echo . 143
 echo . 53
 echo . 123
 
-set /p answer24= LDAP port number is :
+set /p answer24= LDAP port number is : 
 IF %answer24% == 389 IF %endCounter% == %limit% (
 				echo YES, THAT IS CORRECT!
 				pause
@@ -2036,32 +2039,3 @@ REM start https://www.hackread.com/wp-content/uploads/2012/12/Barbaros-DZ-Algeri
 :celebrate
 start https://youtu.be/SC4xMk98Pdc?t=37
 exit
-
-
-:IF1
-cls
-cls
-echo IF 1 WORKED, you input %answer8%
-pause >nul
-goto IF1
-
-:IF2
-cls
-cls
-echo IF 2 WORKED, you input %answer8%
-pause >nul
-goto IF2
-
-:IF3
-cls
-cls
-echo IF 3 WORKED, you input %answer8%
-pause >nul
-goto IF3
-
-:IF4
-cls
-cls
-echo IF 4 WORKED, you input %answer8%
-pause >nul
-goto IF4
