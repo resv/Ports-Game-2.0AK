@@ -1199,31 +1199,37 @@ echo Question %index%
 echo NetBIOS (Network Basic Input/Output System) - TCP, UDP (it has 3 ports)
 echo Provides network communication services for LANs that use NetBIOS
 echo -------------------------------------------------------------------------------
-echo (There are 3 valid answers)
 echo . TCP 139  
 echo . UDP 137
-echo . TCP 443
+echo . TCP 136
 echo . UDP 138
 
-set /p answer21= NetBIOS port number is :
-set result=false
-if %answer21% == 139 set result=true
-if %answer21% == 137 set result=true
-if %answer21% == 138 set result=true
-if "%result%" == "true" ( 
-	echo CORRECT, KEEP GOING!
-	pause 
-	cls
-	goto Q22 
-)
-if %answer21% == x (  
-	cls
-	goto portList
-)else (  
-	echo That's incorrect, please try again
-	pause 
-	cls
-	goto start)
+set /p answer21= Which is NOT a NetBIOS port :
+IF %answer21% == 136 IF %endCounter% == %limit% (
+				echo YES, THAT IS CORRECT!
+				pause
+				cls
+				goto finish
+		)
+		IF %answer21% == 136 ( 
+				echo CORRECT, KEEP GOING!
+				set /A "endCounter+=1"
+				set /A "i=%RANDOM%*30/32768+1"
+                set /A "index+=1"
+				pause 
+				cls
+				goto Q%i%
+		)
+		IF %answer21% == x (  
+				cls
+				goto portList
+		)
+		IF NOT %answer21% == 136 (  
+		echo That is incorrect!
+		pause 
+		cls
+		goto start
+		)
 
 REM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MULTIPLE CHOICE
 
