@@ -133,7 +133,7 @@ echo                                   Notes
 echo -------------------------------------------------------------------------------
 echo.
 echo V1 DEV: FAYCEL RAMDA / ???
-echo V2 DEV: ADAM KIM / CYBERSECURITY 2021-NY-14
+echo V2 DEV: ADAM KIM / Q&A: ADRIAN GARGCIA / CYBERSECURITY 2021-NY-14
 echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
 echo.
@@ -141,12 +141,12 @@ echo ---------------------------------------------------------------------------
 echo                                v2.0 UPDATES
 echo -------------------------------------------------------------------------------
 echo.
-echo -Randomize mode has been added, questions can now be randomized
+echo -Questions can now be randomized
 echo -Removed welcome screen and username input (removed fluff)
 echo -Edited or removed prompts that included usernames (removed fluff)
 echo -Added a port list reference page, added more ports based on default questions
 echo -Fixed typos
-echo -Fixed game crashing for invalid data input (blank input such as pressing enter)
+echo -Fixed game crashing for invalid data input (blank input including return)
 echo -Included prompts for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
@@ -230,24 +230,18 @@ set "endCounter=1"
 set "index=1"
 set "limit=30"
 
-REM THIS SMALL SECTION HERE IS WHAT NEEDS TO BE ADDED TO EACH Q
-REM THIS INCREMENTS ENDCOUNTER, IF REACHED THE LIMIT(30 QUESTIONS), we will CELEBRATE, ELSE WE GO TO NEXT RANDOM Q 
-REM set /A "i=%RANDOM%*30/32768+1"  (30 needs to be changed to more questions)
-REM set /A "endCounter+=1"
-REM (IF END COUNTER = limit, go to celebrate ELSE go to Q%i%)
-
-
 pause 
 cls
 goto Q%i%
 
 
-REM ------------------ALL QUESTION COMMENTS-----------------------------------
+REM ------------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
 REM -Q7 FIXED TYPO "HHTPS"
 REM -PROMPT WORDING ADDED TO NOTIFY USER THERE ARE MORE THAN 1 ANSWER
 REM ALL IF STATEMENTS RECODED FOR "AND" OPERATORS, FLOW CONTROL IN BATCH IS WEIRD, NO LOGICAL "ANDS" ARE POSSILBLE?!
 REM ALL IF STATEMENTS ARE NOT NESTED FOR BETTER LEGIBILITY, ALTHOUGH COULD BE NESTED IF YOU WISH...
+REM MULTIPLE CHOICE QUESTIONS WILL REDIRECT TO PART B AND/OR C TO REQUEST USER INPUT
 
 echo ----------------------------------------
 echo               let's begin
