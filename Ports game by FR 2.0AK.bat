@@ -69,10 +69,10 @@ if %choose% == 1 goto begin
 if %choose% == 2 goto exit
 if %choose% == x goto portList
 if %choose% == u goto updates
-IF NOT %choose% == x (  
+IF NOT %choose% == "x" (  
 		REM echo.
 		REM echo That is not a valid option
-		REM pause >nul
+		rem pause >nul
 		cls
 		goto start
 		)
@@ -133,7 +133,7 @@ echo                                   Notes
 echo -------------------------------------------------------------------------------
 echo.
 echo V1 DEV: FAYCEL RAMDA / ???
-echo V2 DEV: ADAM KIM / Q&A: ADRIAN GARGCIA / CYBERSECURITY 2021-NY-14
+echo V2 DEV: ADAM KIM / Q^&A: ADRIAN GARGCIA / CYBERSECURITY 2021-NY-14
 echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
 echo SOURCECODE @ VWWW.GITHUB.COM/RESV
 echo.
