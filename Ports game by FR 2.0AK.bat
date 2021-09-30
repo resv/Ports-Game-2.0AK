@@ -14,7 +14,7 @@ REM NEXT CYCLE STUDENTS CAN MAKE THIS CODE MORE EFFICIENT...
 REM ---------------------------v2 UPDATES-----------------------------------------------------------------------------------------
 REM -ADDED QUESTION RANDOMIZER ALGORITHM
 REM -BYPASSED WELCOME SCREEN & NAME INPUT (REDUCE FLUFF AND STORED FOR FUTURE USE IF NEEDED)
-REM -REMOVED STATEMENTS WITH "%username&"
+REM -REMOVED STATEMENTS WITH "%username%"
 REM -ADDED PORTLIST PAGE FOR REFERENCE, CAN BE ACCESSED AT ANY TIME
 REM -ADDED NEW PORTS TO PORTLIST BASED ON PRIOR DEV'S QUESTIONS
 REM -FIXED TYPOS, ADDED PROMPTS FOR QUESTIONS W/ MULTIPLE ANSWERS
@@ -48,7 +48,7 @@ echo ---------------------------------------------------------------------------
 echo.
 echo  Welcome to TCP/UDP PORTS TEST
 echo. 
-echo  %limit% correct consecutive answers will take you to the end
+echo  %limit% correct consecutive answers will take you to the celebration
 echo. 
 echo. (THIS IS STILL BEING TESTED, SUBMIT BUGS TO TELEGRAM DM OR AKIM456@GMAIL.COM)
 echo.
@@ -135,23 +135,23 @@ echo.
 echo V1 DEV: FAYCEL RAMDA / ???
 echo V2 DEV: ADAM KIM / Q^&A: ADRIAN GARGCIA / CYBERSECURITY 2021-NY-14
 echo INSTRUCTORS: BRITTANY GRANT, EMMANUAL ESPINAL, RAF
-echo SOURCECODE @ VWWW.GITHUB.COM/RESV
+echo SOURCECODE @ WWW.GITHUB.COM/RESV
 echo.
 echo -------------------------------------------------------------------------------
 echo                                v2.0 UPDATES
 echo -------------------------------------------------------------------------------
 echo.
-echo -Questions can now be randomized
+echo -Questions are now randomized and repeated to enforce effective learning
 echo -Removed welcome screen and username input (removed fluff)
 echo -Edited or removed prompts that included usernames (removed fluff)
 echo -Added a port list reference page, added more ports based on default questions
 echo -Fixed typos
 echo -Fixed game crashing for invalid data input (blank input including return)
-echo -Included prompts for questions that have multiple answers
+echo -Learner will be prompted for questions that have multiple answers
 echo -A user will now have an option to celebrate when completing the test
 echo -Enlarged default window size and color scheme to be user friendly
-echo -Can add more port questions based on COMPTIA STUDY GUIDE 
-echo  (learners must request this for a dollar)
+echo -Submit any bugs found to akim456@gmail.com, or the next cycle can takeover..
+echo -Adding more questions can be requested... (for a dollar)
 echo.
 echo Press any key to go back to the main menu...
 pause >nul
@@ -180,45 +180,6 @@ echo.
 echo.
 echo.
 
-
-
-REM CREATED AN ARRAY MANUALLY BECAUSE BATCH FILE ARRAY CREATION IS TOO COMPLEX FOR ME TO MAKE EFFICIENTLY IN MY SHORT TIME
-set questions[1]=Q1
-set questions[2]=Q2
-set questions[3]=Q3
-set questions[4]=Q4
-set questions[5]=Q5
-set questions[6]=Q6
-set questions[7]=Q7
-set questions[8]=Q8
-set questions[9]=Q9
-set questions[10]=Q10
-set questions[11]=Q11
-set questions[12]=Q12
-set questions[13]=Q13
-set questions[14]=Q14
-set questions[15]=Q15
-set questions[16]=Q16
-set questions[17]=Q17
-set questions[18]=Q18
-set questions[19]=Q19
-set questions[20]=Q20
-set questions[21]=Q21
-set questions[22]=Q22
-set questions[23]=Q23
-set questions[24]=Q24
-set questions[25]=Q25
-set questions[26]=Q26
-set questions[27]=Q27
-set questions[28]=Q28
-set questions[29]=Q29
-set questions[30]=Q30
-
-
-REM THIS IS THE RANDOMIZER ALGORYTHM THAT WILL RANDOMIZE AFTER EACH QUESTION (must be added after each question to rerandomize)
-set /A "i=%RANDOM%*30/32768+1"
-set /A "index+=1"
-
 REM WE USE COUNTERS AND CHECK FOR 30 CORRECT ANSWERS, WE DON'T HAVE LOGIC TO REMOVE DUPLICATE QUESTIONS.
 REM DUPLICATE QUESTIONS ARE STILL A GREAT EFFECTIVE METHOD IN REINFORCING MATERIAL ON A LEARNER
 REM INDEX IS IMPORTANT TO KEEP QUESTION # TO DYNAMICALLY CHANGE.
@@ -230,10 +191,13 @@ set "endCounter=1"
 set "index=1"
 set "limit=30"
 
+REM THIS IS THE RANDOMIZER ALGORYTHM THAT WILL RANDOMIZE AFTER EACH QUESTION (must be added after each question to rerandomize)
+set /A "i=1"
+set /A "i=%RANDOM%*30/32768+1"
+
 pause 
 cls
 goto Q%i%
-
 
 REM ------------------------ALL QUESTION COMMENTS-----------------------------------
 REM -QUESTIONS 1-30, EACH QUESTION NOW HAS "x" OPTION TO "goto portList"
